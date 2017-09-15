@@ -1,0 +1,26 @@
+jar {
+    baseName = 'app-admin'
+}
+
+ext["thymeleaf.version"] = "3.0.2.RELEASE"
+ext["thymeleaf-layout-dialect.version"] = "2.1.1"
+
+dependencies {
+	compile project(":domain")
+
+	//spring boot support
+	compile("org.springframework.boot:spring-boot-starter-cache")
+	compile("org.springframework.boot:spring-boot-starter-actuator")
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+//	compile("org.springframework.boot:spring-boot-starter-security")
+
+	compile("org.springframework.boot:spring-boot-devtools")
+
+//	compile("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
+
+	//swagger2
+	compile("io.springfox:springfox-swagger-ui:2.6.1")
+	compile("io.springfox:springfox-swagger2:2.6.1")
+}
+

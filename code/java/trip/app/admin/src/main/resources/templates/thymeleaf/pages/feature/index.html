@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <th:block th:fragment="title">Feature Configuration</th:block>
+
+        <th:block th:fragment="script">
+            <script type="text/javascript" th:src="@{/resources/js/feature/feature.js}"></script>
+        </th:block>
+
+        <th:block th:fragment="content">
+            <div class="row">
+                <h1>Feature Configuration</h1>
+            </div>
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Value</th>
+                        <th>Description</th>
+                        <th>IsActive</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="feature" v-cloak>
+                        <tr v-for="item in items">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.date }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.isActive ? "true" : "false" }}</td>
+                            <td><a v-on:click="changeActive(item.name)">{{item.isActive ? "On" : "Off"}}</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+    </body>
+</html>

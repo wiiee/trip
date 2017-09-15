@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <th:block th:fragment="title">Cache Management</th:block>
+
+        <th:block th:fragment="content">
+            <div class="row">
+                <h1>Cache</h1>
+            </div>
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Hits</th>
+                        <th>Misses</th>
+                        <th>Gets</th>
+                        <th>Puts</th>
+                        <th>Removals</th>
+                        <th>Evictions</th>
+                        <th>HitPercentage</th>
+                        <th>MissPercentage</th>
+                        <th>AvgGetTime</th>
+                        <th>AvgPutTime</th>
+                        <th>AvgRemoveTime</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="statistic : ${statistics}">
+                            <td><a th:href="${#servletContext.contextPath + '/cache/' + statistic.name}" th:text="${statistic.name}"></a></td>
+                            <td th:text="${statistic.cacheHits}"></td>
+                            <td th:text="${statistic.cacheMisses}"></td>
+                            <td th:text="${statistic.cacheGets}"></td>
+                            <td th:text="${statistic.cachePuts}"></td>
+                            <td th:text="${statistic.cacheRemovals}"></td>
+                            <td th:text="${statistic.cacheEvictions}"></td>
+                            <td th:text="${statistic.cacheHitPercentage}"></td>
+                            <td th:text="${statistic.cacheMissPercentage}"></td>
+                            <td th:text="${statistic.averageGetTime}"></td>
+                            <td th:text="${statistic.averagePutTime}"></td>
+                            <td th:text="${statistic.averageRemoveTime}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+    </body>
+</html>

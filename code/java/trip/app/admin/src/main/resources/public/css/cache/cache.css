@@ -1,0 +1,8 @@
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#value {
+    height: 750px;
+}

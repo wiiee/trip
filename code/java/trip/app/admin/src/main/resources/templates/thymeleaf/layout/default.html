@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title th:insert="${view} :: title"></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <th:block th:unless="${_isLocal}">
+            <!-- Common styles -->
+            <link rel="stylesheet" type="text/css" th:href="@{/resources/libs/bootstrap/css/bootstrap.min.css}">
+            <link rel="stylesheet" type="text/css" th:href="@{/resources/css/default.css}">
+        </th:block>
+
+        <th:block th:if="${_isLocal}">
+            <!-- Common styles -->
+            <link rel="stylesheet" type="text/css" th:href="@{/resources/libs/bootstrap/css/bootstrap.css}">
+            <link rel="stylesheet" type="text/css" th:href="@{/resources/css/default.css}">
+        </th:block>
+
+        <th:block th:replace="~{${view} :: css} ?: _"></th:block>
+    </head>
+    <body>
+        <div th:replace="fragment/header :: header">Header goes here!</div>
+
+        <div class="container">
+            <div th:replace="${view} :: content">Content goes here!</div>
+
+            <hr />
+            <div th:replace="fragment/footer :: footer">Footer goes here!</div>
+        </div>
+
+        <th:block th:unless="${_isLocal}">
+            <!-- Common scripts -->
+            <script type="text/javascript" th:src="@{/resources/libs/jquery/jquery-3.2.0.min.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/bootstrap/js/bootstrap.min.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/lodash/lodash.min.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/vue/vue.min.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/vue/vue-resource.min.js}"></script>
+        </th:block>
+
+        <th:block th:if="${_isLocal}">
+            <!-- Common scripts -->
+            <script type="text/javascript" th:src="@{/resources/libs/jquery/jquery-3.2.0.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/bootstrap/js/bootstrap.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/lodash/lodash.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/vue/vue.js}"></script>
+            <script type="text/javascript" th:src="@{/resources/libs/vue/vue-resource.min.js}"></script>
+        </th:block>
+
+        <th:block th:replace="~{${view} :: script} ?: _"></th:block>
+    </body>
+</html>

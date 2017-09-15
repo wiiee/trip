@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-title>
+        <ion-segment [ngModel]="titleIndex.toString()">
+          <ion-segment-button *ngFor="let item of titles; let i = index" (ionSelect)=selectTitle(i) value="{{i}}">
+            {{item}}
+          </ion-segment-button>
+        </ion-segment>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="log-in" [hidden]="titleIndex !== 0">
+    <log-in></log-in>
+  </div>
+  <div class="sign-up" [hidden]="titleIndex !== 1">
+    <sign-up></sign-up>
+  </div>
+</ion-content>

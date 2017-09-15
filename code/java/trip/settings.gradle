@@ -1,0 +1,5 @@
+rootProject.name = "trip"
+
+include "platform"
+include "domain"
+include "app:admin"

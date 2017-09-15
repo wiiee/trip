@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <body>
+        <th:block th:fragment="title">cache entries</th:block>
+
+        <th:block th:fragment="content">
+            <div class="row">
+                <th:block th:with="items=${#strings.arraySplit(#request.servletPath, '/')},length=${#arrays.length(items)}">
+                    <h1 th:text="${items[length - 1] + '(' + size + ')'}"></h1>
+                </th:block>
+            </div>
+            <div class="row">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="entry : ${entries}">
+                            <td th:text="${entry.key}"></td>
+                            <td th:text="${entry.value}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </th:block>
+    </body>
+</html>
