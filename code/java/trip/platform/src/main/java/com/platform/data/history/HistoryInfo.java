@@ -2,12 +2,13 @@ package com.platform.data.history;
 
 import com.platform.constant.HistoryType;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by wiiee on 9/1/2017.
  */
-public class HistoryInfo {
+public class HistoryInfo implements Serializable {
     private String data;
     private String userId;
     private Date date;

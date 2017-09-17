@@ -25,6 +25,7 @@ export class UserService extends BaseService {
     let logInUser = new User(user.id, user.password, user.confirmPassword);
     if (isEncrypt) {
       logInUser.password = md5(logInUser.password);
+      logInUser.confirmPassword = logInUser.password;
     }
 
     return new Promise(resolve => {
@@ -46,6 +47,8 @@ export class UserService extends BaseService {
   public signUp(user: User): Promise<ServiceResult> {
     let signUpUser = new User(user.id, user.password, user.confirmPassword);
     signUpUser.password = md5(signUpUser.password);
+    signUpUser.confirmPassword = signUpUser.password;
+    
     return new Promise(resolve => {
       let url = Constant.HOST + "/api/user/signUp?deviceId=" + this.contextService.deviceId;
       this.http.post(url, JSON.stringify(signUpUser), HttpUtil.HTTP_OPTIONS)

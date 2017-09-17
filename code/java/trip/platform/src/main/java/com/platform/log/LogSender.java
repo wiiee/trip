@@ -11,11 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class LogSender {
     private final RabbitTemplate rabbitTemplate;
-    private final LogReceiver logReceiver;
 
     @Autowired
-    public LogSender(LogReceiver logReceiver, RabbitTemplate rabbitTemplate) {
-        this.logReceiver = logReceiver;
+    public LogSender(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 

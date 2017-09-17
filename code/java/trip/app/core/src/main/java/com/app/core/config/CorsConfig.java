@@ -1,4 +1,4 @@
-package com.app.admin.config;
+package com.app.core.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -5,7 +5,7 @@ var app = new Vue({
     }
   },
   created: function(){
-    this.$http.get("/webApi/feature")
+    this.$http.get("/api/feature")
             .then((response) => {
                 var items = {};
                 _.forEach(response.data, function(item){
@@ -26,7 +26,7 @@ var app = new Vue({
   methods: {
     changeActive: function(name){
         this.items[name].isActive = !this.items[name].isActive;
-        this.$http.post("/webApi/feature/" + name);
+        this.$http.post("/api/feature/" + name);
     }
   }
 });

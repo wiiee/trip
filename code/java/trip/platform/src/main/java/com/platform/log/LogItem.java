@@ -2,10 +2,12 @@ package com.platform.log;
 
 import com.platform.data.history.HistoryInfo;
 
+import java.io.Serializable;
+
 /**
  * Created by wiiee on 9/10/2017.
  */
-public class LogItem {
+public class LogItem implements Serializable {
     private String id;
     private HistoryInfo historyInfo;
 

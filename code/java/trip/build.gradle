@@ -51,6 +51,18 @@ project(':domain') {
     }
 }
 
+project(':app:core') {
+    apply plugin: 'org.springframework.boot'
+
+    bootRepackage {
+        enabled = false
+    }
+}
+
 project(':app:admin') {
+    apply plugin: 'org.springframework.boot'
+}
+
+project(':app:restful') {
     apply plugin: 'org.springframework.boot'
 }

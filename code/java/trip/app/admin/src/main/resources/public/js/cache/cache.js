@@ -27,7 +27,7 @@ var app = new Vue({
 
     this.name = $("h1").data("name");
 
-    this.$http.get("/webApi/cache/" + this.name)
+    this.$http.get("/api/cache/" + this.name)
             .then((response) => {
                 var items = {};
 
@@ -44,7 +44,7 @@ var app = new Vue({
   methods: {
     showValue: function(key){
         if(!this.items[key]){
-            this.$http.post("/webApi/cache/" + this.name, key)
+            this.$http.post("/api/cache/" + this.name, key)
                     .then((response) => {
                         this.items[key] = response.data;
                         this.editor.set(this.items[key]);
@@ -66,7 +66,7 @@ var app = new Vue({
                         key: key,
                         value: JSON.stringify(self.items[key])
                     };
-                    self.$http.post("/webApi/cache/update/" + self.name, data)
+                    self.$http.post("/api/cache/update/" + self.name, data)
                          .then((response) => {
                             bootbox.alert("Success!");
                          })
@@ -78,7 +78,7 @@ var app = new Vue({
         });
     },
     refresh: function(key){
-        this.$http.post("/webApi/cache/" + this.name, key)
+        this.$http.post("/api/cache/" + this.name, key)
                 .then((response) => {
                     this.items[key] = response.data;
                     bootbox.alert("Success!");
@@ -92,7 +92,7 @@ var app = new Vue({
         bootbox.confirm("Are you sure to remove this cache?", function (result) {
             if (result) {
                 if (result) {
-                    self.$http.post("/webApi/cache/evict/" + self.name, key)
+                    self.$http.post("/api/cache/evict/" + self.name, key)
                          .then((response) => {
                             bootbox.alert("Success!");
                          })
@@ -107,7 +107,7 @@ var app = new Vue({
         var self = this;
         bootbox.confirm("Are you sure to remove all caches?", function (result) {
             if (result) {
-                self.$http.delete("/webApi/cache/" + self.name)
+                self.$http.delete("/api/cache/" + self.name)
                      .then((response) => {
                         bootbox.alert("Success!");
                      })

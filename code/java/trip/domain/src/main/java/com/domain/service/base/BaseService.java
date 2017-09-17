@@ -1,5 +1,6 @@
 package com.domain.service.base;
 
+import com.domain.service.HistoryService;
 import com.platform.constant.HistoryType;
 import com.platform.context.IContext;
 import com.platform.context.IContextRepository;
@@ -71,39 +72,55 @@ public abstract class BaseService<T extends IData<Id>, Id extends Serializable> 
     }
 
     public T create(T entity) {
-        _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Create));
+        if(!isHistoryService()){
+            _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Create));
+        }
+
         return repository.insert(entity);
     }
 
     public List<T> create(Iterable<T> entities) {
-        for (T entity : entities) {
-            _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Create));
+        if(!isHistoryService()){
+            for (T entity : entities) {
+                _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Create));
+            }
         }
 
         return repository.insert(entities);
     }
 
     public void update(T entity) {
-        _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Update));
+        if(!isHistoryService()){
+            _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Update));
+        }
+
         repository.save(entity);
     }
 
     public void update(Iterable<T> entities) {
-        for (T entity : entities) {
-            _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Update));
+        if(!isHistoryService()){
+            for (T entity : entities) {
+                _logSender.send(buildLogItem(buildId(entity.getId()), GsonUtil.toJson(entity), HistoryType.Update));
+            }
         }
 
         repository.save(entities);
     }
 
     public void delete(Id id) {
-        _logSender.send(buildLogItem(buildId(id), null, HistoryType.Delete));
+        if(!isHistoryService()){
+            _logSender.send(buildLogItem(buildId(id), null, HistoryType.Delete));
+        }
+
         repository.delete(id);
     }
 
     public void delete(Iterable<T> entities) {
         for (T entity : entities) {
-            _logSender.send(buildLogItem(buildId(entity.getId()), null, HistoryType.Delete));
+            if(!isHistoryService()){
+                _logSender.send(buildLogItem(buildId(entity.getId()), null, HistoryType.Delete));
+            }
+
             this.delete(entity.getId());
         }
     }
@@ -114,5 +131,9 @@ public abstract class BaseService<T extends IData<Id>, Id extends Serializable> 
 
     private LogItem buildLogItem(String id, String data, HistoryType type){
         return new LogItem(id, new HistoryInfo(data, getContext().getUserId(), new Date(), type));
+    }
+
+    private boolean isHistoryService(){
+        return this instanceof HistoryService;
     }
 }

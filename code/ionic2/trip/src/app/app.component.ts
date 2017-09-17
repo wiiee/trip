@@ -24,13 +24,14 @@ export class MyApp {
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public contextService: ContextService,
     public alertCtrl: AlertController, public storageService: StorageService) {
     this.storageService.get(LocalStorageKey.IS_NOT_FIRST_IN).then((result) => {
-      if (result) {
-        this.isNotFirstIn = true;
-      }
-      else{
-        this.rootPage = WelcomePage;
-        this.storageService.set(LocalStorageKey.IS_NOT_FIRST_IN, true);
-      }
+      // this.rootPage = WelcomePage;
+      // if (result) {
+      //   this.isNotFirstIn = true;
+      // }
+      // else{
+      //   this.rootPage = WelcomePage;
+      //   this.storageService.set(LocalStorageKey.IS_NOT_FIRST_IN, true);
+      // }
     });
 
     platform.ready().then(() => {
@@ -38,14 +39,21 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       contextService.init();
 
-      if(this.isNotFirstIn){
-        if (!contextService.isAuthenticated) {
-          this.rootPage = AuthPage;
-        }
-        else {
-          this.rootPage = TabsPage;
-        }
+      if (!contextService.isAuthenticated) {
+        this.rootPage = AuthPage;
       }
+      else {
+        this.rootPage = TabsPage;
+      }
+
+      // if(this.isNotFirstIn){
+      //   if (!contextService.isAuthenticated) {
+      //     this.rootPage = AuthPage;
+      //   }
+      //   else {
+      //     this.rootPage = TabsPage;
+      //   }
+      // }
 
       if (this.platform.is('android')) {
         platform.backButton.subscribe(() => {

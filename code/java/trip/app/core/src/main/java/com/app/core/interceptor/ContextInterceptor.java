@@ -1,6 +1,6 @@
-package com.app.admin.interceptor;
+package com.app.core.interceptor;
 
-import com.app.admin.context.WebContext;
+import com.app.core.context.WebContext;
 import com.platform.context.IContextRepository;
 import com.platform.log.EsItem;
 import com.platform.log.EsLogger;

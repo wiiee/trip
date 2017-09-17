@@ -2,4 +2,6 @@ rootProject.name = "trip"
 
 include "platform"
 include "domain"
+include "app:core"
 include "app:admin"
+include "app:restful"

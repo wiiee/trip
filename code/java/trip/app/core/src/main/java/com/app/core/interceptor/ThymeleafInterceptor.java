@@ -1,4 +1,4 @@
-package com.app.admin.interceptor;
+package com.app.core.interceptor;
 
 import com.platform.annotation.Layout;
 import org.springframework.beans.factory.annotation.Autowired;

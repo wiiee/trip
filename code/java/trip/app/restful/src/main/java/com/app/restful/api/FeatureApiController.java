@@ -1,4 +1,4 @@
-package com.app.admin.api;
+package com.app.restful.api;
 
 import com.platform.config.FeatureConfig;
 import org.springframework.beans.factory.annotation.Autowired;

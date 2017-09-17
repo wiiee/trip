@@ -1,4 +1,4 @@
-package com.app.admin.context;
+package com.app.core.context;
 
 import com.platform.context.BaseContextRepository;
 import org.springframework.stereotype.Repository;

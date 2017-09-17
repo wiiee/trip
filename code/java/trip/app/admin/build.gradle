@@ -6,12 +6,10 @@ ext["thymeleaf.version"] = "3.0.2.RELEASE"
 ext["thymeleaf-layout-dialect.version"] = "2.1.1"
 
 dependencies {
-	compile project(":domain")
+	compile project(":app:core")
 
 	//spring boot support
-	compile("org.springframework.boot:spring-boot-starter-cache")
 	compile("org.springframework.boot:spring-boot-starter-actuator")
-	compile("org.springframework.boot:spring-boot-starter-web")
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 //	compile("org.springframework.boot:spring-boot-starter-security")
 
