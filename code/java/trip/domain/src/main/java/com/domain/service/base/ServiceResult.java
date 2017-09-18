@@ -4,20 +4,20 @@ package com.domain.service.base;
  * Created by wiiee on 9/17/2017.
  */
 public class ServiceResult {
-    private boolean isSuccessful;
+    private boolean successful;
     private String msg;
 
-    public ServiceResult(boolean isSuccessful, String msg) {
-        this.isSuccessful = isSuccessful;
+    public ServiceResult(boolean successful, String msg) {
+        this.successful = successful;
         this.msg = msg;
     }
 
     public boolean isSuccessful() {
-        return isSuccessful;
+        return successful;
     }
 
     public void setSuccessful(boolean successful) {
-        isSuccessful = successful;
+        successful = successful;
     }
 
     public String getMsg() {
