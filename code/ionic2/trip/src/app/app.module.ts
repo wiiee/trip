@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
 import { WelcomePage } from '../pages/welcome/welcome';
+import { BuildingListPage } from '../pages/building-list/building-list';
 
 import { LogInComponent } from '../components/log-in/log-in';
 import { SignUpComponent } from '../components/sign-up/sign-up';
@@ -39,13 +40,16 @@ import { StorageService } from '../providers/storage';
     TabsPage,
     AuthPage,
     WelcomePage,
+    BuildingListPage,
     LogInComponent,
     SignUpComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: 'true'
+    }),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
@@ -57,6 +61,7 @@ import { StorageService } from '../providers/storage';
     TabsPage,
     AuthPage,
     WelcomePage,
+    BuildingListPage,
     LogInComponent,
     SignUpComponent
   ],

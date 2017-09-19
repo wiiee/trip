@@ -11,6 +11,7 @@ export abstract class BasePage {
     isReady: boolean = false;
     pageSelector: string;
     isHideBottom: boolean = false;
+
     public constructor(public navCtrl: NavController) {
         this.headerHeight = BasePage._headerHeight;
         this.footerHeight = BasePage._footerHeight;
