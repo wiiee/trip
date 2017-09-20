@@ -13,6 +13,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { AuthPage } from '../pages/auth/auth';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { BuildingListPage } from '../pages/building-list/building-list';
+import { BuildingDetailPage } from '../pages/building-detail/building-detail';
 
 import { LogInComponent } from '../components/log-in/log-in';
 import { SignUpComponent } from '../components/sign-up/sign-up';
@@ -41,6 +42,7 @@ import { StorageService } from '../providers/storage';
     AuthPage,
     WelcomePage,
     BuildingListPage,
+    BuildingDetailPage,
     LogInComponent,
     SignUpComponent
   ],
@@ -62,6 +64,7 @@ import { StorageService } from '../providers/storage';
     AuthPage,
     WelcomePage,
     BuildingListPage,
+    BuildingDetailPage,
     LogInComponent,
     SignUpComponent
   ],

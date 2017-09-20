@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { BasePage } from '../shared/base';
 
+import { BuildingDetailPage } from '../building-detail/building-detail';
+
 /**
  * Generated class for the BuildingListPage page.
  *
@@ -28,6 +30,10 @@ export class BuildingListPage extends BasePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuildingListPage');
+  }
+
+  goDetail(){
+    this.navCtrl.push(BuildingDetailPage);
   }
 
 }
