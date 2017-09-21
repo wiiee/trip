@@ -14,6 +14,8 @@ import { AuthPage } from '../pages/auth/auth';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { BuildingListPage } from '../pages/building-list/building-list';
 import { BuildingDetailPage } from '../pages/building-detail/building-detail';
+import { RentTypePage } from '../pages/rent-type/rent-type';
+import { RentPage } from '../pages/rent/rent';
 
 import { LogInComponent } from '../components/log-in/log-in';
 import { SignUpComponent } from '../components/sign-up/sign-up';
@@ -43,6 +45,8 @@ import { StorageService } from '../providers/storage';
     WelcomePage,
     BuildingListPage,
     BuildingDetailPage,
+    RentTypePage,
+    RentPage,
     LogInComponent,
     SignUpComponent
   ],
@@ -65,6 +69,8 @@ import { StorageService } from '../providers/storage';
     WelcomePage,
     BuildingListPage,
     BuildingDetailPage,
+    RentTypePage,
+    RentPage,
     LogInComponent,
     SignUpComponent
   ],

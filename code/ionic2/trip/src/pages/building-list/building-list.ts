@@ -5,6 +5,9 @@ import { BasePage } from '../shared/base';
 
 import { BuildingDetailPage } from '../building-detail/building-detail';
 
+import { BuildingItem } from '../../entity/building-item';
+import { Img } from '../../entity/img';
+
 /**
  * Generated class for the BuildingListPage page.
  *
@@ -17,14 +20,16 @@ import { BuildingDetailPage } from '../building-detail/building-detail';
   templateUrl: 'building-list.html',
 })
 export class BuildingListPage extends BasePage {
-  items: number[];
+  items: BuildingItem[];
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     super(navCtrl);
     
     this.items = [];
 
     for (var i = 0; i < 10; i++) {
-      this.items.push(i);
+      let imgs: Img[] = [];
+      imgs.push(new Img("assets/images/slide" + (i % 4 + 1) + ".jpg"));
+      this.items.push(new BuildingItem(i.toString(), imgs));
     }
   }
 
