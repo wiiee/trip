@@ -6,6 +6,9 @@
 
 <ion-content padding>
   <ion-grid>
+    <ion-row *ngIf="location">
+        <ion-col>您当前的位置: {{location.address}} Lat-{{location.latitude}}, Lon-{{location.longitude}}({{location.address}})</ion-col>
+      </ion-row>
     <ion-row>
       <ion-col col-4 text-center>
         <button ion-button icon-left (click)="buildingList()">

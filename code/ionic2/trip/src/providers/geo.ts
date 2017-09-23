@@ -71,7 +71,7 @@ export class GeoService extends BaseService {
     this.watch = this.geolocation.watchPosition(options).filter(p => p !== undefined && p.coords !== undefined).subscribe(position => {
       console.log(position);
 
-      this.updateLocation(position.coords);
+      this.updateLocation(position.coords, true);
     });
   }
 

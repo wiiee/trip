@@ -14,7 +14,7 @@ export class TabsPage {
     this.tabRoots = [
       {
         root: HomePage,
-        tabTitle: 'Home',
+        tabTitle: '首页',
         tabIcon: 'home'
       },
       {
@@ -24,7 +24,7 @@ export class TabsPage {
       },
       {
         root: AboutPage,
-        tabTitle: 'About',
+        tabTitle: '我的',
         tabIcon: 'information-circle'
       }
     ];

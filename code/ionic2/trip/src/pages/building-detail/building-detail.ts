@@ -13,8 +13,9 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'building-detail.html',
 })
 export class BuildingDetailPage {
-
+  title: string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.title = "发布整租";
   }
 
   ionViewDidLoad() {

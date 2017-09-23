@@ -39,14 +39,14 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       contextService.init();
 
-      // if (!contextService.isAuthenticated) {
-      //   this.rootPage = AuthPage;
-      // }
-      // else {
-      //   this.rootPage = TabsPage;
-      // }
+      if (!contextService.isAuthenticated) {
+        this.rootPage = AuthPage;
+      }
+      else {
+        this.rootPage = TabsPage;
+      }
 
-      this.rootPage = TabsPage;
+      // this.rootPage = TabsPage;
 
       // if(this.isNotFirstIn){
       //   if (!contextService.isAuthenticated) {

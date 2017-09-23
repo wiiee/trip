@@ -33,7 +33,8 @@ export class UserService extends BaseService {
       this.http.post(url, JSON.stringify(logInUser), HttpUtil.HTTP_OPTIONS)
         .map(res => res.json())
         .subscribe(data => {
-          var result = new ServiceResult(data.successful, data.message);
+          //var result = new ServiceResult(data.successful, data.message);
+          var result = new ServiceResult(data.IsSuccessful, data.Message);
 
           if (result.isSuccessful) {
             this.contextService.updateUserDetail(user.id, null);
