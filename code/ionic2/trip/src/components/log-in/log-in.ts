@@ -16,9 +16,9 @@ import { FormPage } from '../../pages/shared/form';
   templateUrl: 'log-in.html'
 })
 export class LogInComponent extends FormPage {
-
   user: User = new User("", "", "");
   isProcessing: boolean = false;
+
   constructor(public fb: FormBuilder, public events: Events, public userService: UserService) {
     super(null);
     this.formErrors = {
@@ -40,6 +40,7 @@ export class LogInComponent extends FormPage {
   }
 
   onSubmit() {
+    this.errorMsg = "";
     this.isProcessing = true;
     this.user = this.form.value;
     this.user.confirmPassword = this.user.password;

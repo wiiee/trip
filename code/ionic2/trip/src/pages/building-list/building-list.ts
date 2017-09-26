@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { BasePage } from '../shared/base';
 
@@ -21,9 +21,11 @@ import { Img } from '../../entity/img';
 })
 export class BuildingListPage extends BasePage {
   items: BuildingItem[];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  filters: string[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
     super(navCtrl);
-    
+
     this.items = [];
 
     for (var i = 0; i < 10; i++) {
@@ -31,14 +33,21 @@ export class BuildingListPage extends BasePage {
       imgs.push(new Img("assets/images/slide" + (i % 4 + 1) + ".jpg"));
       this.items.push(new BuildingItem(i.toString(), imgs));
     }
+
+    this.filters = ["near", "from", "price", "more"];
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuildingListPage');
   }
 
-  goDetail(){
+  goDetail() {
     this.navCtrl.push(BuildingDetailPage);
+  }
+
+  selectFilter(filter: string) {
+    let popover = this.popoverCtrl.create();
+    popover.present();
   }
 
 }

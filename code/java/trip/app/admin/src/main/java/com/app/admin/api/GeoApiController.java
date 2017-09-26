@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created by wiiee on 9/23/2017.
  */
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/geo")
 public class GeoApiController {
     @Autowired
     private BaiduMapProvider baiduMapProvider;

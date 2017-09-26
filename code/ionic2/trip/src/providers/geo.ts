@@ -9,6 +9,8 @@ import { Location } from '../entity/location';
 import { Constant } from '../shared/constant';
 import { Subscription } from "rxjs/Subscription"
 
+import { HttpUtil } from '../shared/http-util';
+
 /*
   Generated class for the Geo provider.
 
@@ -88,8 +90,8 @@ export class GeoService extends BaseService {
 
   public getAddress(latitude: number, longitude: number): Promise<string> {
     return new Promise(resolve => {
-      var url = Constant.HOST + "/api/geo/GetAddress?latitude=" + latitude + "&longitude=" + longitude;
-      this.http.get(url).map(res => res.text()).subscribe(data => {
+      var url = Constant.HOST + "/api/geo/getAddress?latitude=" + latitude + "&longitude=" + longitude;
+      this.http.get(url, HttpUtil.HTTP_OPTIONS).map(res => res.text()).subscribe(data => {
         resolve(data);
       });
     });

@@ -5,11 +5,11 @@ package com.domain.service.base;
  */
 public class ServiceResult {
     private boolean successful;
-    private String msg;
+    private String message;
 
-    public ServiceResult(boolean successful, String msg) {
+    public ServiceResult(boolean successful, String message) {
         this.successful = successful;
-        this.msg = msg;
+        this.message = message;
     }
 
     public boolean isSuccessful() {
@@ -20,11 +20,11 @@ public class ServiceResult {
         successful = successful;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

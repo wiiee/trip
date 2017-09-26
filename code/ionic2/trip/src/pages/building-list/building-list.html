@@ -8,14 +8,23 @@
   <ion-navbar>
     <ion-grid no-padding>
       <ion-row>
-        <ion-col col-9><ion-searchbar (ionInput)="getItems($event)"></ion-searchbar></ion-col>
-        <ion-col col-3 text-center><h4>地图</h4></ion-col>
+        <ion-col col-9>
+          <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+        </ion-col>
+        <ion-col col-3 text-center>
+          <h4>地图</h4>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-segment>
+    <ion-segment-button *ngFor="let filter of filters" (ionSelect)=selectFilter(filter) value="{{filter}}">
+      {{filter}}
+    </ion-segment-button>
+  </ion-segment>
   <ion-card *ngFor="let item of items">
     <ion-grid>
       <ion-row>
