@@ -7,6 +7,7 @@ import { BuildingDetailPage } from '../building-detail/building-detail';
 import { NearFilterPage } from '../near-filter/near-filter';
 
 import { BuildingItem } from '../../entity/building-item';
+import { FilterItem } from '../../entity/filter-item';
 import { Img } from '../../entity/img';
 
 /**
@@ -22,7 +23,7 @@ import { Img } from '../../entity/img';
 })
 export class BuildingListPage extends BasePage {
   items: BuildingItem[];
-  filters: object[];
+  filters: FilterItem[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
     super(navCtrl);
@@ -35,24 +36,12 @@ export class BuildingListPage extends BasePage {
       this.items.push(new BuildingItem(i.toString(), imgs));
     }
 
-    this.filters = [
-      {
-        titel: "附近",
-        popoverPage: NearFilterPage,
-      }, 
-      {
-        titel: "来源",
-        popoverPage: NearFilterPage,
-      }, 
-      {
-        titel: "租金",
-        popoverPage: NearFilterPage,
-      }, 
-      {
-        titel: "更多",
-        popoverPage: NearFilterPage,
-      }      
-    ];
+    this.filters = [];
+
+    this.filters.push(new FilterItem(0, "附近", this.popoverCtrl.create(NearFilterPage)));
+    this.filters.push(new FilterItem(1, "来源", this.popoverCtrl.create(NearFilterPage)));
+    this.filters.push(new FilterItem(2, "租金", this.popoverCtrl.create(NearFilterPage)));
+    this.filters.push(new FilterItem(3, "更多", this.popoverCtrl.create(NearFilterPage)));
   }
 
   ionViewDidLoad() {
@@ -63,9 +52,7 @@ export class BuildingListPage extends BasePage {
     this.navCtrl.push(BuildingDetailPage);
   }
 
-  selectFilter(filter: string) {
-    let popover = this.popoverCtrl.create();
-    popover.present();
+  selectFilter(filter: FilterItem) {
+    filter.popover.present();
   }
-
 }
