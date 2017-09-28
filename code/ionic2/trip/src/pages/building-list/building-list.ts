@@ -4,6 +4,7 @@ import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { BasePage } from '../shared/base';
 
 import { BuildingDetailPage } from '../building-detail/building-detail';
+import { NearFilterPage } from '../near-filter/near-filter';
 
 import { BuildingItem } from '../../entity/building-item';
 import { Img } from '../../entity/img';
@@ -21,7 +22,7 @@ import { Img } from '../../entity/img';
 })
 export class BuildingListPage extends BasePage {
   items: BuildingItem[];
-  filters: string[];
+  filters: object[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
     super(navCtrl);
@@ -34,7 +35,24 @@ export class BuildingListPage extends BasePage {
       this.items.push(new BuildingItem(i.toString(), imgs));
     }
 
-    this.filters = ["near", "from", "price", "more"];
+    this.filters = [
+      {
+        titel: "附近",
+        popoverPage: NearFilterPage,
+      }, 
+      {
+        titel: "来源",
+        popoverPage: NearFilterPage,
+      }, 
+      {
+        titel: "租金",
+        popoverPage: NearFilterPage,
+      }, 
+      {
+        titel: "更多",
+        popoverPage: NearFilterPage,
+      }      
+    ];
   }
 
   ionViewDidLoad() {

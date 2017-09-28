@@ -22,7 +22,7 @@
 <ion-content padding>
   <ion-segment>
     <ion-segment-button *ngFor="let filter of filters" (ionSelect)=selectFilter(filter) value="{{filter}}">
-      {{filter}}
+      {{filter.title}}
     </ion-segment-button>
   </ion-segment>
   <ion-card *ngFor="let item of items">

@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
   selector: 'page-near-filter',
   templateUrl: 'near-filter.html'
 })
-export class AboutPage {
+export class NearFilterPage {
 
   constructor(public navCtrl: NavController) {
 
