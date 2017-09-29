@@ -5,6 +5,7 @@ import { BasePage } from '../shared/base';
 
 import { BuildingDetailPage } from '../building-detail/building-detail';
 import { NearFilterPage } from '../near-filter/near-filter';
+import { PriceFilterPage } from '../price-filter/price-filter';
 
 import { BuildingItem } from '../../entity/building-item';
 import { FilterItem } from '../../entity/filter-item';
@@ -40,7 +41,7 @@ export class BuildingListPage extends BasePage {
 
     this.filters.push(new FilterItem(0, "附近", this.popoverCtrl.create(NearFilterPage)));
     this.filters.push(new FilterItem(1, "来源", this.popoverCtrl.create(NearFilterPage)));
-    this.filters.push(new FilterItem(2, "租金", this.popoverCtrl.create(NearFilterPage)));
+    this.filters.push(new FilterItem(2, "租金", this.popoverCtrl.create(PriceFilterPage)));
     this.filters.push(new FilterItem(3, "更多", this.popoverCtrl.create(NearFilterPage)));
   }
 

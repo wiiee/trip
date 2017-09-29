@@ -17,6 +17,7 @@ import { BuildingDetailPage } from '../pages/building-detail/building-detail';
 import { RentTypePage } from '../pages/rent-type/rent-type';
 import { RentPage } from '../pages/rent/rent';
 import { NearFilterPage } from '../pages/near-filter/near-filter';
+import { PriceFilterPage } from '../pages/price-filter/price-filter';
 
 import { LogInComponent } from '../components/log-in/log-in';
 import { SignUpComponent } from '../components/sign-up/sign-up';
@@ -49,6 +50,7 @@ import { StorageService } from '../providers/storage';
     RentTypePage,
     RentPage,
     NearFilterPage,
+    PriceFilterPage,
     LogInComponent,
     SignUpComponent
   ],
@@ -74,6 +76,7 @@ import { StorageService } from '../providers/storage';
     RentTypePage,
     RentPage,
     NearFilterPage,
+    PriceFilterPage,
     LogInComponent,
     SignUpComponent
   ],
