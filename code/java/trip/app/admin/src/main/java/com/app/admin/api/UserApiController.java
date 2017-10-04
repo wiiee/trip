@@ -7,6 +7,8 @@ import com.domain.service.base.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Created by wiiee on 9/17/2017.
  */
@@ -32,5 +34,10 @@ public class UserApiController {
         }
 
         return userService.signUp(new User(model.getId(), model.getPassword()));
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public List<User> test() {
+        return userService.test();
     }
 }

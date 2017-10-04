@@ -86,3 +86,8 @@ $tabs-md-tab-color-active: color($colors, danger);
 
 @import "roboto";
 @import "noto-sans";
+
+.near-popover .popover-content {
+  width: 100% !important;
+  left: 0 !important;
+}

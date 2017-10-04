@@ -1,5 +1,7 @@
 package com.domain.valuetype.hotel;
 
+import com.domain.valuetype.geo.Location;
+
 import java.util.List;
 
 /**

@@ -1,4 +1,4 @@
-package com.domain.valuetype.hotel;
+package com.domain.valuetype.geo;
 
 /**
  * Created by wiiee on 9/3/2017.

@@ -29,6 +29,7 @@ import { ContextService } from '../providers/context';
 import { GeoService } from '../providers/geo';
 import { CameraService } from '../providers/camera';
 import { MessageService } from '../providers/message';
+import { RegionService } from '../providers/region';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -98,6 +99,7 @@ import { StorageService } from '../providers/storage';
     CameraService,
     UserService,
     MessageService,
+    RegionService,
     StorageService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

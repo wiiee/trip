@@ -6,6 +6,7 @@ import com.platform.model.LinkedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
@@ -39,6 +40,17 @@ public class RegionService extends BaseService<Region, Integer> {
         }
 
         return result;
+    }
+
+    //获取所有的子级地区
+    public List<Pair<Integer, String>> getRegionsByParentId(int parentId){
+        Region regionExample = new Region();
+        regionExample.setParentId(parentId);
+
+        Example<Region> example = Example.of(regionExample);
+
+        return getAll(example).stream().map(o -> Pair.of(o.getId(), o.getName())).collect(Collectors.toList());
+        //return get().stream().map(o -> Pair.of(o.getId(), o.getName())).collect(Collectors.toList());
     }
 
     //获取父地区

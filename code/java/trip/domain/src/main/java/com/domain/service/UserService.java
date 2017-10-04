@@ -1,12 +1,17 @@
 package com.domain.service;
 
+import com.domain.entity.geo.Region;
 import com.domain.entity.user.User;
 import com.domain.service.base.BaseService;
 import com.domain.service.base.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+
+import java.util.List;
 
 /**
  * Created by wiiee on 9/17/2017.
@@ -76,5 +81,14 @@ public class UserService extends BaseService<User, String> {
         {
             return new ServiceResult(false, USER_ALREADY_EXIST);
         }
+    }
+
+    public List<User> test(){
+        User user = new User(null, "e10adc3949ba59abbe56e057f20f883e");
+
+
+        Example<User> example = Example.of(user);
+
+        return getAll(example);
     }
 }

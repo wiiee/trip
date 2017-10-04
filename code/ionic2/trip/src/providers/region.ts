@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Region } from "../entity/region";
+import { Area } from "../entity/geo/area";
 import { Constant } from "../shared/constant";
 import { BaseService } from './base';
 import { HttpUtil } from '../shared/http-util';
@@ -21,20 +21,20 @@ export class RegionService extends BaseService {
     super();
   }
 
-  public getRegionsByParentId(parentId: string): Promise<Region[]> {
+  public getRegionsByParentId(parentId: number): Promise<Area[]> {
     if (this.regionsWithParentId[parentId]) {
       return Promise.resolve(this.regionsWithParentId[parentId]);
     }
 
     return new Promise(resolve => {
-      var url = Constant.HOST + "/api/region/GetNextNodes?regionId=" + parentId;
+      var url = Constant.HOST + "/api/region/getRegionsByParentId?parentId=" + parentId;
       this.http.get(url, HttpUtil.HTTP_OPTIONS)
         .map(res => res.json())
         .subscribe(data => {
           var result = [];
 
           data.forEach(element => {
-            result.push(new Region(element.Id, element.Name));
+            result.push({id: element.first, name: element.second});
           });
 
           this.regionsWithParentId[parentId] = result;
@@ -43,7 +43,7 @@ export class RegionService extends BaseService {
     });
   }
 
-  public getParallelNodes(regionId: string): Promise<Region[]> {
+  public getParallelNodes(regionId: string): Promise<Area[]> {
     if (this.regionsWithParallelId[regionId]) {
       return Promise.resolve(this.regionsWithParallelId[regionId]);
     }
@@ -56,7 +56,7 @@ export class RegionService extends BaseService {
           var result = [];
 
           data.forEach(element => {
-            result.push(new Region(element.Id, element.Name));
+            result.push({id: element.Id, name: element.Name});
           });
 
           this.regionsWithParallelId[regionId] = result;

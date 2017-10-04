@@ -1,7 +1,7 @@
-import { Region } from './region';
+import { Area } from './geo/area';
 
 export class Address {
-    public constructor(public name: string, public phone: string, public text: string, public regions: Region[], public isDefault: boolean){}
+    public constructor(public name: string, public phone: string, public text: string, public regions: Area[], public isDefault: boolean){}
 
     public isEmpty(): boolean {
         if(this.name){

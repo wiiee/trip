@@ -41,7 +41,7 @@ export class BuildingListPage extends BasePage {
 
     this.filters = [];
 
-    this.filters.push(new FilterItem(0, "附近", this.popoverCtrl.create(NearFilterPage), "arrow-down"));
+    this.filters.push(new FilterItem(0, "附近", this.popoverCtrl.create(NearFilterPage, {}, {cssClass: "near-popover"}), "arrow-down"));
     this.filters.push(new FilterItem(1, "来源", this.popoverCtrl.create(FromFilterPage), "arrow-down"));
     this.filters.push(new FilterItem(2, "租金", this.popoverCtrl.create(PriceFilterPage), "arrow-down"));
     this.filters.push(new FilterItem(3, "更多", this.popoverCtrl.create(MoreFilterPage), "arrow-down"));

@@ -6,7 +6,10 @@ import com.platform.data.history.History;
 import com.platform.data.history.IHistoryService;
 import com.platform.log.LogItem;
 import com.platform.log.LogSender;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +20,8 @@ import javax.annotation.PostConstruct;
  */
 @Component
 public class HistoryService extends BaseService<History, String> implements IHistoryService {
+    private static final Logger _logger = LoggerFactory.getLogger(HistoryService.class);
+
     @Autowired
     private IContextRepository contextRepository;
 
@@ -36,18 +41,23 @@ public class HistoryService extends BaseService<History, String> implements IHis
 
     @Override
     public synchronized void process(LogItem item) {
-        switch (item.getHistoryInfo().getType()) {
-            case Create:
-                create(new History(item.getId(), item.getHistoryInfo()));
-                break;
-            case Update:
-            case Delete:
-                History history = get(item.getId());
-                history.addHistoryInfo(item.getHistoryInfo());
-                update(history);
-                break;
-            default:
-                break;
+        try{
+            switch (item.getHistoryInfo().getType()) {
+                case Create:
+                    create(new History(item.getId(), item.getHistoryInfo()));
+                    break;
+                case Update:
+                case Delete:
+                    History history = get(item.getId());
+                    history.addHistoryInfo(item.getHistoryInfo());
+                    update(history);
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch (Exception ex){
+            _logger.error(ex.getMessage());
         }
     }
 }
