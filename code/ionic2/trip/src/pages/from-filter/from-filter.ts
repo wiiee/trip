@@ -9,6 +9,7 @@ import { PriceRange } from '../../entity/price-range';
 })
 export class FromFilterPage {
   items: string[];
+  current: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [];
@@ -16,5 +17,11 @@ export class FromFilterPage {
     this.items.push("不限");
     this.items.push("个人");
     this.items.push("品牌公寓");
+
+    this.current = this.items[0];
+  }
+
+  itemSelected(item: string) {
+    this.current = item;
   }
 }

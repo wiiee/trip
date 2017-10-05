@@ -13,6 +13,10 @@ import { BuildingItem } from '../../entity/building-item';
 import { FilterItem } from '../../entity/filter-item';
 import { Img } from '../../entity/img';
 
+import { AreaBlock } from '../../entity/geo/area-block';
+import { AreaType } from '../../entity/geo/area-type';
+import { Area } from '../../entity/geo/area';
+
 /**
  * Generated class for the BuildingListPage page.
  *
@@ -39,12 +43,18 @@ export class BuildingListPage extends BasePage {
       this.items.push(new BuildingItem(i.toString(), imgs));
     }
 
+    var blocks = [];
+    blocks.push(new AreaBlock(new Area(325, "区域", true), [
+      new Area(325, "区域", true),
+      new Area(2, "地铁", true)
+    ], AreaType.Region, 0));
+
     this.filters = [];
 
-    this.filters.push(new FilterItem(0, "附近", this.popoverCtrl.create(NearFilterPage, {}, {cssClass: "near-popover"}), "arrow-down"));
-    this.filters.push(new FilterItem(1, "来源", this.popoverCtrl.create(FromFilterPage), "arrow-down"));
-    this.filters.push(new FilterItem(2, "租金", this.popoverCtrl.create(PriceFilterPage), "arrow-down"));
-    this.filters.push(new FilterItem(3, "更多", this.popoverCtrl.create(MoreFilterPage), "arrow-down"));
+    this.filters.push(new FilterItem(0, "附近", NearFilterPage, "arrow-down", {blocks: blocks}));
+    this.filters.push(new FilterItem(1, "来源", FromFilterPage, "arrow-down"));
+    this.filters.push(new FilterItem(2, "租金", PriceFilterPage, "arrow-down"));
+    this.filters.push(new FilterItem(3, "更多", MoreFilterPage, "arrow-down"));   
   }
 
   ionViewDidLoad() {
@@ -55,7 +65,7 @@ export class BuildingListPage extends BasePage {
     this.navCtrl.push(BuildingDetailPage);
   }
 
-  selectFilter(filter: FilterItem) {
+  selectFilter(ev: UIEvent, filter: FilterItem) {
     if(filter.iconName === "arrow-down"){
       filter.iconName = "arrow-up";
     }
@@ -63,6 +73,10 @@ export class BuildingListPage extends BasePage {
       filter.iconName = "arrow-down";
     }
 
-    filter.popover.present();
+    let popover = this.popoverCtrl.create(filter.page, filter.data, {cssClass: "filter-popover"});
+
+    popover.present({
+      ev: ev
+    });
   }
 }

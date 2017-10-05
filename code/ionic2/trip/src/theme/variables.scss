@@ -80,6 +80,11 @@ $tabs-md-tab-color-active: color($colors, danger);
 
 @import "ionic.ionicons";
 
+// Font Awesome
+$fa-font-path: $font-path;
+@import "font-awesome";
+
+// @import "bootstrap";
 
 // Fonts
 // --------------------------------------------------
@@ -87,7 +92,16 @@ $tabs-md-tab-color-active: color($colors, danger);
 @import "roboto";
 @import "noto-sans";
 
-.near-popover .popover-content {
+.filter-popover .popover-content {
   width: 100% !important;
   left: 0 !important;
+  bottom: 50px !important;
+}
+
+.filter-popover ion-backdrop {
+  opacity: 0.26;
+}
+
+.current {
+  color: color($colors, danger) !important;
 }

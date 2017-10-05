@@ -9,6 +9,7 @@ import { PriceRange } from '../../entity/price-range';
 })
 export class PriceFilterPage {
   items: PriceRange[];
+  current: PriceRange;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [];
@@ -21,5 +22,11 @@ export class PriceFilterPage {
     this.items.push(new PriceRange(3000, 5000, "3000-5000元"));
     this.items.push(new PriceRange(5000, 8000, "5000-8000元"));
     this.items.push(new PriceRange(8000, 9999999, "8000元以上"));
+
+    this.current = this.items[0];
+  }
+
+  itemSelected(item: PriceRange) {
+    this.current = item;
   }
 }

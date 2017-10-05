@@ -1,7 +1,27 @@
 <ion-content no-padding>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+    <button ion-item *ngFor="let item of items" (click)="itemSelected(item)" [class.current]="current === item">
           {{ item.text }}
         </button>
   </ion-list>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        自定义
+      </ion-col>
+      <ion-col col-2>
+          <input type="text" value="123" />
+      </ion-col>
+      <ion-col col-2>
+        -
+      </ion-col>
+      <ion-col col-2>
+          <input type="text" value="abc" />
+      </ion-col>            
+      <ion-col col-3>
+        <button ion-button color="danger">确定</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

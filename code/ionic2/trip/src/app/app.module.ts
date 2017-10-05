@@ -23,6 +23,7 @@ import { PriceFilterPage } from '../pages/price-filter/price-filter';
 
 import { LogInComponent } from '../components/log-in/log-in';
 import { SignUpComponent } from '../components/sign-up/sign-up';
+import {FaIconComponent} from "../components/fa-icon/fa-icon.component";
 
 import { UserService } from '../providers/user';
 import { ContextService } from '../providers/context';
@@ -57,7 +58,8 @@ import { StorageService } from '../providers/storage';
     FromFilterPage,
     MoreFilterPage,
     LogInComponent,
-    SignUpComponent
+    SignUpComponent,
+    FaIconComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +87,8 @@ import { StorageService } from '../providers/storage';
     FromFilterPage,
     MoreFilterPage,
     LogInComponent,
-    SignUpComponent
+    SignUpComponent,
+    FaIconComponent
   ],
   providers: [
     StatusBar,

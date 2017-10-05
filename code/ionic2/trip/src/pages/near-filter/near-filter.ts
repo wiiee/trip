@@ -14,20 +14,22 @@ import { RegionService } from '../../providers/region';
 export class NearFilterPage implements OnInit {
   blocks: AreaBlock[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public regionService: RegionService) {
-    this.blocks = [];
-    this.blocks.push(new AreaBlock(new Area(325, "区域", true), [
-      new Area(325, "区域", true),
-      new Area(2, "地铁", true)
-    ], AreaType.Region, 0));
+  constructor(public navCtrl: NavController, private navParams: NavParams, public regionService: RegionService) {
+    // this.blocks = [];
+    // this.blocks.push(new AreaBlock(new Area(325, "区域", true), [
+    //   new Area(325, "区域", true),
+    //   new Area(2, "地铁", true)
+    // ], AreaType.Region, 0));
   }
 
   ngOnInit() {
-    this.blocks.forEach(block => {
-      if (block.current) {
-        this.buildNextBlock(block);
-      }
-    });
+    if (this.navParams.data) {
+      this.blocks = this.navParams.data.blocks;
+    }
+
+    if(this.blocks.length === 1){
+      this.buildNextBlock(this.blocks[0]); 
+    }
   }
 
   itemSelected(block: AreaBlock, item: Area) {
@@ -43,8 +45,12 @@ export class NearFilterPage implements OnInit {
   }
 
   buildNextBlock(block: AreaBlock) {
+    if(!block.current.hasChild){
+      return;
+    }
+
     //清空余下的block
-    if (block.depth < this.blocks.length) {
+    if (block.depth != this.blocks.length - 1) {
       this.blocks = this.blocks.slice(0, block.depth + 1);
     }
 
