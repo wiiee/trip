@@ -16,37 +16,47 @@ export class NearFilterPage implements OnInit {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public regionService: RegionService) {
     this.blocks = [];
-    this.blocks.push(new AreaBlock({ id: 325, name: "区域" }, [
-      { id: 325, name: "区域" },
-      { id: 2, name: "地铁" }
+    this.blocks.push(new AreaBlock(new Area(325, "区域", true), [
+      new Area(325, "区域", true),
+      new Area(2, "地铁", true)
     ], AreaType.Region, 0));
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.blocks.forEach(block => {
-      if(block.current){
+      if (block.current) {
         this.buildNextBlock(block);
       }
     });
   }
 
   itemSelected(block: AreaBlock, item: Area) {
+    if (item === this.blocks[0].options[0]) {
+      this.blocks[0].type = AreaType.Region;
+    }
+    else if (item === this.blocks[0].options[1]) {
+      block.type = AreaType.Metro;
+    }
+
     block.current = item;
     this.buildNextBlock(block);
   }
 
   buildNextBlock(block: AreaBlock) {
     //清空余下的block
-    if(block.depth < this.blocks.length){
+    if (block.depth < this.blocks.length) {
       this.blocks = this.blocks.slice(0, block.depth + 1);
     }
 
-    if(block.type === AreaType.Region){
+    if (block.type === AreaType.Region) {
       this.regionService.getRegionsByParentId(<number>block.current.id).then(data => {
-        if(data && data.length > 0){
+        if (data && data.length > 0) {
           this.blocks.push(new AreaBlock(null, data, block.type, block.depth + 1));
         }
       });
+    }
+    else if(block.type === AreaType.Metro) {
+
     }
   }
 }

@@ -1,6 +1,7 @@
 package com.domain.service;
 
 import com.domain.entity.geo.Region;
+import com.domain.model.RegionArea;
 import com.domain.service.base.BaseService;
 import com.platform.model.LinkedList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,18 +44,26 @@ public class RegionService extends BaseService<Region, Integer> {
     }
 
     //获取所有的子级地区
-    public List<Pair<Integer, String>> getRegionsByParentId(int parentId){
+    public List<RegionArea> getRegionAreasByParentId(int parentId){
         Region regionExample = new Region();
         regionExample.setParentId(parentId);
 
         Example<Region> example = Example.of(regionExample);
 
-        return getAll(example).stream().map(o -> Pair.of(o.getId(), o.getName())).collect(Collectors.toList());
-        //return get().stream().map(o -> Pair.of(o.getId(), o.getName())).collect(Collectors.toList());
+        return getAll(example).stream().map(o -> new RegionArea(o.getId(), o.getName(), hasChild(o.getId()))).collect(Collectors.toList());
+    }
+
+    public boolean hasChild(int id){
+        Region region = new Region();
+        region.setParentId(id);
+
+        Example<Region> example = Example.of(region);
+
+        return getOne(example) != null;
     }
 
     //获取父地区
-    public List<Integer> getRegionsByChild(int childId) {
+    public List<Integer> getRegionsByChildId(int childId) {
         List<Integer> result = new ArrayList<>();
         result.add(childId);
         Region region = get(childId);
@@ -94,7 +103,7 @@ public class RegionService extends BaseService<Region, Integer> {
     }
 
     //获取所有的子目录
-    public LinkedList<Integer> getRegionsByParent(int parentId) {
+    public LinkedList<Integer> getRegionsByParentId(int parentId) {
         LinkedList<Integer> linkedList = new LinkedList<Integer>();
         linkedList.setId(parentId);
 

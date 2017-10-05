@@ -1,5 +1,8 @@
 //表示一个区域点
-export interface Area {
-    id: string | number;
-    name: string;
+export class Area {
+    public constructor(public id: string | number, public name: string, public hasChild: boolean) { }
+
+    public equal(area: Area) {
+        return this.id === area.id && this.name === area.name && this.hasChild === area.hasChild;
+    }
 }

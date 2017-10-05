@@ -1,8 +1,8 @@
 package com.app.admin.api;
 
+import com.domain.model.RegionArea;
 import com.domain.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Pair;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,9 +19,9 @@ public class RegionApiController {
     @Autowired
     private RegionService regionService;
 
-    @RequestMapping(value = "/getRegionsByParentId", method = RequestMethod.GET)
-    public List<Pair<Integer, String>> getAddress(@RequestParam int parentId) {
-        return regionService.getRegionsByParentId(parentId);
+    @RequestMapping(value = "/getRegionAreasByParentId", method = RequestMethod.GET)
+    public List<RegionArea> getAddress(@RequestParam int parentId) {
+        return regionService.getRegionAreasByParentId(parentId);
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)

@@ -27,14 +27,14 @@ export class RegionService extends BaseService {
     }
 
     return new Promise(resolve => {
-      var url = Constant.HOST + "/api/region/getRegionsByParentId?parentId=" + parentId;
+      var url = Constant.HOST + "/api/region/getRegionAreasByParentId?parentId=" + parentId;
       this.http.get(url, HttpUtil.HTTP_OPTIONS)
         .map(res => res.json())
         .subscribe(data => {
           var result = [];
 
           data.forEach(element => {
-            result.push({id: element.first, name: element.second});
+            result.push({id: element.id, name: element.name, hasChild: element.hasChild});
           });
 
           this.regionsWithParentId[parentId] = result;

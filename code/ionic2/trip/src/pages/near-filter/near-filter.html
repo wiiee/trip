@@ -4,7 +4,7 @@
       <ion-col *ngFor="let block of blocks" col-6>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-            {{ item.name }}
+            {{ item.name }} 
           </button>
         </ion-list>
       </ion-col>
@@ -16,8 +16,8 @@
       <ion-col *ngFor="let block of blocks" col-4>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-              {{ item.name }}
-            </button>
+            {{ item.name }} 
+          </button>
         </ion-list>
       </ion-col>
     </ion-row>
@@ -28,8 +28,8 @@
       <ion-col *ngFor="let block of blocks" col-3>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                {{ item.name }}
-              </button>
+            {{ item.name }} 
+          </button>
         </ion-list>
       </ion-col>
     </ion-row>
@@ -40,8 +40,8 @@
       <ion-col *ngFor="let block of blocks" col-2>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                  {{ item.name }}
-                </button>
+            {{ item.name }} 
+          </button>
         </ion-list>
       </ion-col>
     </ion-row>
@@ -52,8 +52,8 @@
       <ion-col *ngFor="let block of blocks" col-1>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                    {{ item.name }}
-                  </button>
+            {{ item.name }} <ion-checkbox [(ngModel)]="pepperoni" *ngIf="!item.hasChild"></ion-checkbox>
+          </button>
         </ion-list>
       </ion-col>
     </ion-row>
