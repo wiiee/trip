@@ -1,69 +1,57 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-
-import { IonicStorageModule } from '@ionic/storage';
-
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
-import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
-import { AuthPage } from '../pages/auth/auth';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { BuildingListPage } from '../pages/building-list/building-list';
-import { BuildingDetailPage } from '../pages/building-detail/building-detail';
-import { RentTypePage } from '../pages/rent-type/rent-type';
-import { RentPage } from '../pages/rent/rent';
-import { NearFilterPage } from '../pages/near-filter/near-filter';
-import { FromFilterPage } from '../pages/from-filter/from-filter';
-import { MoreFilterPage } from '../pages/more-filter/more-filter';
-import { PriceFilterPage } from '../pages/price-filter/price-filter';
-
-import { LogInComponent } from '../components/log-in/log-in';
-import { SignUpComponent } from '../components/sign-up/sign-up';
-import {FaIconComponent} from "../components/fa-icon/fa-icon.component";
-
-import { UserService } from '../providers/user';
-import { ContextService } from '../providers/context';
-import { GeoService } from '../providers/geo';
-import { CameraService } from '../providers/camera';
-import { MessageService } from '../providers/message';
-import { RegionService } from '../providers/region';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { Device } from '@ionic-native/device';
 import { Camera } from '@ionic-native/camera';
-import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
-import { Geolocation } from '@ionic-native/geolocation';
-import { StorageService } from '../providers/storage';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { IonicStorageModule, Storage } from '@ionic/storage';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
+import { Items } from '../mocks/providers/items';
+import { Settings } from '../providers/providers';
+import { User } from '../providers/providers';
+import { ApiProvider } from '../providers/providers';
+import { RegionProvider } from '../providers/providers';
+import { MyApp } from './app.component';
+import { GeoProvider } from '../providers/geo/geo';
+
+// The translate loader needs to know where to load i18n files
+// in Ionic's static asset pipeline.
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+export function provideSettings(storage: Storage) {
+  /**
+   * The Settings provider takes a set of default settings for your app.
+   *
+   * You can add new settings options at any time. Once the settings are saved,
+   * these values will not overwrite the saved values (this can be done manually if desired).
+   */
+  return new Settings(storage, {
+    option1: true,
+    option2: 'Ionitron J. Framework',
+    option3: '3',
+    option4: 'Hello'
+  });
+}
 
 @NgModule({
   declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    AuthPage,
-    WelcomePage,
-    BuildingListPage,
-    BuildingDetailPage,
-    RentTypePage,
-    RentPage,
-    NearFilterPage,
-    PriceFilterPage,
-    FromFilterPage,
-    MoreFilterPage,
-    LogInComponent,
-    SignUpComponent,
-    FaIconComponent
+    MyApp
   ],
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: 'true'
     }),
@@ -71,40 +59,20 @@ import { StorageService } from '../providers/storage';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage,
-    AuthPage,
-    WelcomePage,
-    BuildingListPage,
-    BuildingDetailPage,
-    RentTypePage,
-    RentPage,
-    NearFilterPage,
-    PriceFilterPage,
-    FromFilterPage,
-    MoreFilterPage,
-    LogInComponent,
-    SignUpComponent,
-    FaIconComponent
+    MyApp
   ],
   providers: [
-    StatusBar,
-    SplashScreen,
-    Device,
+    ApiProvider,
+    Items,
+    User,
     Camera,
-    BackgroundGeolocation,
-    Geolocation,
-    ContextService,
-    GeoService,
-    CameraService,
-    UserService,
-    MessageService,
-    RegionService,
-    StorageService,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    SplashScreen,
+    StatusBar,
+    { provide: Settings, useFactory: provideSettings, deps: [Storage] },
+    // Keep this to enable Ionic's runtime error handling during development
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    RegionProvider,
+    GeoProvider
   ]
 })
 export class AppModule { }

@@ -1,105 +1,42 @@
-import { Component } from '@angular/core';
-import { Platform, AlertController } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
+import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { Config, Nav, Platform } from 'ionic-angular';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { AuthPage } from '../pages/auth/auth';
-import { WelcomePage } from '../pages/welcome/welcome';
-
-import { StorageService } from '../providers/storage';
-import { ContextService } from '../providers/context';
-
-import { LocalStorageKey } from '../shared/local-storage-key';
+import { FirstRunPage } from '../pages/pages';
+import { Settings } from '../providers/providers';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any;
-  backPressed: boolean;
-  isProcessing: boolean;
-  isNotFirstIn: boolean;
+  rootPage = FirstRunPage;
 
-  constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public contextService: ContextService,
-    public alertCtrl: AlertController, public storageService: StorageService) {
-    this.storageService.get(LocalStorageKey.IS_NOT_FIRST_IN).then((result) => {
-      // this.rootPage = WelcomePage;
-      // if (result) {
-      //   this.isNotFirstIn = true;
-      // }
-      // else{
-      //   this.rootPage = WelcomePage;
-      //   this.storageService.set(LocalStorageKey.IS_NOT_FIRST_IN, true);
-      // }
-    });
+  @ViewChild(Nav) nav: Nav;
 
+  constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      contextService.init();
-
-      if (!contextService.isAuthenticated) {
-        this.rootPage = AuthPage;
-      }
-      else {
-        this.rootPage = TabsPage;
-      }
-
-      // this.rootPage = TabsPage;
-
-      // if(this.isNotFirstIn){
-      //   if (!contextService.isAuthenticated) {
-      //     this.rootPage = AuthPage;
-      //   }
-      //   else {
-      //     this.rootPage = TabsPage;
-      //   }
-      // }
-
-      if (this.platform.is('android')) {
-        platform.backButton.subscribe(() => {
-          this.registerBackButtonListener();
-        });
-      }
-
-      statusBar.styleDefault();
-      splashScreen.hide();
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
     });
+    this.initTranslate();
   }
 
-  registerBackButtonListener(): void {
-    if (this.backPressed && !this.isProcessing) {
-      this.confirmExitApp();
-    }
-    else {
-      this.backPressed = true;
-      setTimeout(() => {
-        this.backPressed = false;
-      }, 2000);
-    }
-  }
+  initTranslate() {
+    // Set the default language for translation strings, and the current language.
+    this.translate.setDefaultLang('en');
 
-  confirmExitApp(): void {
-    this.isProcessing = true;
-    let confirm = this.alertCtrl.create({
-      title: '退出',
-      message: '确定退出?',
-      buttons: [
-        {
-          text: '取消',
-          handler: () => {
-            this.isProcessing = false;
-          }
-        },
-        {
-          text: '退出',
-          handler: () => {
-            this.platform.exitApp();
-          }
-        }
-      ]
+    if (this.translate.getBrowserLang() !== undefined) {
+      this.translate.use(this.translate.getBrowserLang());
+    } else {
+      this.translate.use('en'); // Set your language here
+    }
+
+    this.translate.get(['BACK_BUTTON_TEXT']).subscribe(values => {
+      this.config.set('ios', 'backButtonText', values.BACK_BUTTON_TEXT);
     });
-    confirm.present();
   }
 }

@@ -1,32 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { BuildingListPage } from '../building-list/building-list';
-import { RentTypePage } from '../rent-type/rent-type';
+/**
+ * Generated class for the HomePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
 
-import { Location } from '../../entity/location';
-
-import { GeoService } from '../../providers/geo';
-
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
-export class HomePage implements OnInit {
-  location: Location;
+export class HomePage {
 
-  constructor(public navCtrl: NavController, public geoService: GeoService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ngOnInit(){
-    this.location = this.geoService.getLocation();
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad HomePage');
   }
 
-  buildingList() {
-    this.navCtrl.push(BuildingListPage);
-  }
-
-  rent() {
-    this.navCtrl.push(RentTypePage);
-  }
 }

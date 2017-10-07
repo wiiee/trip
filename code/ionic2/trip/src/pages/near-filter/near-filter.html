@@ -1,70 +1,70 @@
 <ion-content no-padding>
-    <ion-grid *ngIf="blocks.length === 2">
-      <ion-row>
-        <ion-col *ngFor="let block of blocks" col-6>
-          <ion-list>
-            <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                  {{ item.name }}
-                </button>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid *ngIf="blocks.length === 2">
+    <ion-row>
+      <ion-col *ngFor="let block of blocks" col-6>
+        <ion-list>
+          <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
+                {{ item.name }}
+              </button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-grid *ngIf="blocks.length === 3">
-      <ion-row>
-        <ion-col *ngFor="let block of blocks" col-4>
-          <ion-list>
-            <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                  {{ item.name }}
-                </button>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid *ngIf="blocks.length === 3">
+    <ion-row>
+      <ion-col *ngFor="let block of blocks" col-4>
+        <ion-list>
+          <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
+                {{ item.name }}
+              </button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-grid *ngIf="blocks.length === 4">
-      <ion-row>
-        <ion-col *ngFor="let block of blocks" col-3>
-          <ion-list>
-            <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                  {{ item.name }} 
-                </button>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid *ngIf="blocks.length === 4">
+    <ion-row>
+      <ion-col *ngFor="let block of blocks" col-3>
+        <ion-list>
+          <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
+                {{ item.name }} 
+              </button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-grid *ngIf="blocks.length === 5 || blocks.length === 6">
-      <ion-row>
-        <ion-col *ngFor="let block of blocks" col-2>
-          <ion-list>
-            <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                  {{ item.name }} 
-                </button>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid *ngIf="blocks.length === 5 || blocks.length === 6">
+    <ion-row>
+      <ion-col *ngFor="let block of blocks" col-2>
+        <ion-list>
+          <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
+                {{ item.name }} 
+              </button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-    <ion-grid *ngIf="blocks.length > 6">
-      <ion-row>
-        <ion-col *ngFor="let block of blocks" col-1>
-          <ion-list>
-            <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
-                  {{ item.name }} 
-                </button>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <ion-grid *ngIf="blocks.length > 6">
+    <ion-row>
+      <ion-col *ngFor="let block of blocks" col-1>
+        <ion-list>
+          <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
+                {{ item.name }} 
+              </button>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 
-        <!-- <ion-grid padding>
-          <ion-row>
-            <ion-col col-4><button ion-button color="light">清空条件</button></ion-col>
-            <ion-col col-8><button ion-button color="danger" block>确认</button></ion-col>
-          </ion-row>
-        </ion-grid>
-      </div> -->
+      <!-- <ion-grid padding>
+        <ion-row>
+          <ion-col col-4><button ion-button color="light">清空条件</button></ion-col>
+          <ion-col col-8><button ion-button color="danger" block>确认</button></ion-col>
+        </ion-row>
+      </ion-grid>
+    </div> -->
 </ion-content>

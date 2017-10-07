@@ -1,11 +1,19 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { PriceRange } from '../../entity/price-range';
 
+/**
+ * Generated class for the PriceFilterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-price-filter',
-  templateUrl: 'price-filter.html'
+  templateUrl: 'price-filter.html',
 })
 export class PriceFilterPage {
   items: PriceRange[];
@@ -13,7 +21,7 @@ export class PriceFilterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.items = [];
-
+    
     this.items.push(new PriceRange(0, 9999999, "不限"));
     this.items.push(new PriceRange(0, 500, "500元以下"));
     this.items.push(new PriceRange(500, 1000, "500-1000元"));
@@ -26,7 +34,8 @@ export class PriceFilterPage {
     this.current = this.items[0];
   }
 
-  itemSelected(item: PriceRange) {
-    this.current = item;
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PriceFilterPage');
   }
+
 }

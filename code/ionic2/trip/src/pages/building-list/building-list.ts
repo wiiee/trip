@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, PopoverController } from 'ionic-angular';
-
-import { BasePage } from '../shared/base';
+import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
 import { BuildingDetailPage } from '../building-detail/building-detail';
 import { NearFilterPage } from '../near-filter/near-filter';
@@ -24,43 +22,42 @@ import { Area } from '../../entity/geo/area';
  * Ionic pages and navigation.
  */
 
+@IonicPage()
 @Component({
   selector: 'page-building-list',
   templateUrl: 'building-list.html',
 })
-export class BuildingListPage extends BasePage {
+export class BuildingListPage {
   items: BuildingItem[];
   filters: FilterItem[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public popoverCtrl: PopoverController) {
-    super(navCtrl);
-
     this.items = [];
-
-    for (var i = 0; i < 10; i++) {
-      let imgs: Img[] = [];
-      imgs.push(new Img("assets/images/slide" + (i % 4 + 1) + ".jpg"));
-      this.items.push(new BuildingItem(i.toString(), imgs));
-    }
-
-    var blocks = [];
-    blocks.push(new AreaBlock(new Area(325, "区域", true), [
-      new Area(325, "区域", true),
-      new Area(2, "地铁", true)
-    ], AreaType.Region, 0));
-
-    this.filters = [];
-
-    this.filters.push(new FilterItem(0, "附近", NearFilterPage, "arrow-down", {blocks: blocks}));
-    this.filters.push(new FilterItem(1, "来源", FromFilterPage, "arrow-down"));
-    this.filters.push(new FilterItem(2, "租金", PriceFilterPage, "arrow-down"));
-    this.filters.push(new FilterItem(3, "更多", MoreFilterPage, "arrow-down"));   
+    
+        for (var i = 0; i < 10; i++) {
+          let imgs: Img[] = [];
+          imgs.push(new Img("assets/images/slide" + (i % 4 + 1) + ".jpg"));
+          this.items.push(new BuildingItem(i.toString(), imgs));
+        }
+    
+        var blocks = [];
+        blocks.push(new AreaBlock(new Area(325, "区域", true), [
+          new Area(325, "区域", true),
+          new Area(2, "地铁", true)
+        ], AreaType.Region, 0));
+    
+        this.filters = [];
+    
+        this.filters.push(new FilterItem(0, "附近", NearFilterPage, "arrow-down", {blocks: blocks}));
+        this.filters.push(new FilterItem(1, "来源", FromFilterPage, "arrow-down"));
+        this.filters.push(new FilterItem(2, "租金", PriceFilterPage, "arrow-down"));
+        this.filters.push(new FilterItem(3, "更多", MoreFilterPage, "arrow-down"));   
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BuildingListPage');
   }
-
+  
   goDetail() {
     this.navCtrl.push(BuildingDetailPage);
   }

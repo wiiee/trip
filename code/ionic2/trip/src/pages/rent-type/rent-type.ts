@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RentPage } from '../rent/rent';
 
@@ -10,6 +10,7 @@ import { RentPage } from '../rent/rent';
  * Ionic pages and navigation.
  */
 
+@IonicPage()
 @Component({
   selector: 'page-rent-type',
   templateUrl: 'rent-type.html',
@@ -26,5 +27,4 @@ export class RentTypePage {
   rentWhole() {
     this.navCtrl.push(RentPage);
   }
-
 }

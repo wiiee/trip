@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AreaBlock } from '../../entity/geo/area-block';
 import { AreaType } from '../../entity/geo/area-type';
@@ -7,19 +7,26 @@ import { Area } from '../../entity/geo/area';
 
 import { RegionService } from '../../providers/region';
 
+/**
+ * Generated class for the NearFilterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+@IonicPage()
 @Component({
   selector: 'page-near-filter',
-  templateUrl: 'near-filter.html'
+  templateUrl: 'near-filter.html',
 })
-export class NearFilterPage implements OnInit {
+export class NearFilterPage {
   blocks: AreaBlock[];
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, public regionService: RegionService) {
-    // this.blocks = [];
-    // this.blocks.push(new AreaBlock(new Area(325, "区域", true), [
-    //   new Area(325, "区域", true),
-    //   new Area(2, "地铁", true)
-    // ], AreaType.Region, 0));
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad NearFilterPage');
   }
 
   ngOnInit() {
