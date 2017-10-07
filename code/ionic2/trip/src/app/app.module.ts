@@ -8,14 +8,19 @@ import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { BackgroundGeolocation } from '@ionic-native/background-geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
+import { Device } from '@ionic-native/device';
 
 import { Items } from '../mocks/providers/items';
 import { Settings } from '../providers/providers';
-import { User } from '../providers/providers';
+import { UserProvider } from '../providers/providers';
 import { ApiProvider } from '../providers/providers';
 import { RegionProvider } from '../providers/providers';
+import { GeoProvider } from '../providers/providers';
+import { ContextProvider } from '../providers/providers';
+
 import { MyApp } from './app.component';
-import { GeoProvider } from '../providers/geo/geo';
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -63,16 +68,20 @@ export function provideSettings(storage: Storage) {
   ],
   providers: [
     ApiProvider,
+    RegionProvider,
+    GeoProvider,
+    ContextProvider,
     Items,
-    User,
+    UserProvider,
     Camera,
     SplashScreen,
     StatusBar,
+    BackgroundGeolocation,
+    Geolocation,
+    Device,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
-    { provide: ErrorHandler, useClass: IonicErrorHandler },
-    RegionProvider,
-    GeoProvider
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule { }

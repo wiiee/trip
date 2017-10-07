@@ -5,7 +5,7 @@ import { AreaBlock } from '../../entity/geo/area-block';
 import { AreaType } from '../../entity/geo/area-type';
 import { Area } from '../../entity/geo/area';
 
-import { RegionService } from '../../providers/region';
+import { RegionProvider } from '../../providers/providers';
 
 /**
  * Generated class for the NearFilterPage page.
@@ -22,7 +22,7 @@ import { RegionService } from '../../providers/region';
 export class NearFilterPage {
   blocks: AreaBlock[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public regionProvider: RegionProvider) {
   }
 
   ionViewDidLoad() {
@@ -62,7 +62,7 @@ export class NearFilterPage {
     }
 
     if (block.type === AreaType.Region) {
-      this.regionService.getRegionsByParentId(<number>block.current.id).then(data => {
+      this.regionProvider.getRegionsByParentId(<number>block.current.id).then(data => {
         if (data && data.length > 0) {
           this.blocks.push(new AreaBlock(null, data, block.type, block.depth + 1));
         }

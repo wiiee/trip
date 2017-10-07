@@ -2,7 +2,13 @@ import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
 
-import { ApiProvider } from '../api/api';
+import { ApiProvider } from '../providers';
+import { ContextProvider } from '../providers';
+
+import { Constant } from '../../shared/constant';
+import { User } from '../../entity/user';
+import { ServiceResult } from '../../entity/service-result';
+import { md5 } from '../../shared/md5';
 
 /**
  * Most apps have the concept of a User. This is a simple provider
@@ -27,20 +33,27 @@ import { ApiProvider } from '../api/api';
 export class UserProvider {
   _user: any;
 
-  constructor(public apiProvider: ApiProvider) { }
+  constructor(public apiProvider: ApiProvider, public contextProvider: ContextProvider) { }
 
   /**
    * Send a POST request to our login endpoint with the data
    * the user entered on the form.
    */
-  login(accountInfo: any) {
-    let seq = this.apiProvider.post('login', accountInfo).share();
+  logIn(user: User, isEncrypt = true) {
+    let logInUser = new User(user.id, user.password);
+    if (isEncrypt) {
+      logInUser.password = md5(logInUser.password);
+    }
+
+    let url = Constant.HOST + "/api/user/logIn";
+    let seq = this.apiProvider.post(url, JSON.stringify(logInUser)).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
-        this._loggedIn(res);
-      } else {
+      var result = new ServiceResult(res.successful, res.message);
+
+      if (result.isSuccessful) {
+        this.contextProvider.updateUserDetail(user.id, null);
       }
     }, err => {
       console.error('ERROR', err);
@@ -53,13 +66,19 @@ export class UserProvider {
    * Send a POST request to our signup endpoint with the data
    * the user entered on the form.
    */
-  signup(accountInfo: any) {
-    let seq = this.apiProvider.post('signup', accountInfo).share();
+  signUp(user: User) {
+    let signUpUser = new User(user.id, user.password);
+    signUpUser.password = md5(signUpUser.password);
+
+    let url = Constant.HOST + "/api/user/signUp?deviceId=" + this.contextProvider.deviceId;
+    let seq = this.apiProvider.post(url, JSON.stringify(signUpUser)).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in
-      if (res.status == 'success') {
-        this._loggedIn(res);
+      var result = new ServiceResult(res.successful, res.message);
+      
+      if (result.isSuccessful) {
+        this.contextProvider.updateUserDetail(user.id, null);
       }
     }, err => {
       console.error('ERROR', err);
@@ -72,13 +91,6 @@ export class UserProvider {
    * Log the user out, which forgets the session
    */
   logout() {
-    this._user = null;
-  }
-
-  /**
-   * Process a login/signup response to store user data
-   */
-  _loggedIn(resp) {
-    this._user = resp.user;
+    this.contextProvider.emptyUser();
   }
 }

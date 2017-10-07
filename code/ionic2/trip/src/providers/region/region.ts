@@ -33,9 +33,9 @@ export class RegionProvider {
         .subscribe(res => {
           var result = [];
 
-          res.forEach(element => {
-            result.push({id: element.id, name: element.name, hasChild: element.hasChild});
-          });
+          // res.forEach(element => {
+          //   result.push({id: element.id, name: element.name, hasChild: element.hasChild});
+          // });
 
           this.regionsWithParentId[parentId] = result;
           resolve(result);
@@ -58,9 +58,9 @@ export class RegionProvider {
         .subscribe(data => {
           var result = [];
 
-          data.forEach(element => {
-            result.push({id: element.Id, name: element.Name});
-          });
+          // data.forEach(element => {
+          //   result.push({id: element.Id, name: element.Name});
+          // });
 
           this.regionsWithParallelId[regionId] = result;
           resolve(result);
