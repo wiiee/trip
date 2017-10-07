@@ -30,10 +30,10 @@ export class RegionProvider {
       };
 
       this.apiProvider.get(url, params)
-        .subscribe(data => {
+        .subscribe(res => {
           var result = [];
 
-          data.forEach(element => {
+          res.forEach(element => {
             result.push({id: element.id, name: element.name, hasChild: element.hasChild});
           });
 
