@@ -9,5 +9,8 @@ import { BuildingListPage } from './building-list';
   imports: [
     IonicPageModule.forChild(BuildingListPage),
   ],
+  exports: [
+    BuildingListPage
+  ]
 })
 export class BuildingListPageModule {}

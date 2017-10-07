@@ -3,8 +3,8 @@ import { Device } from '@ionic-native/device';
 import { Storage } from '@ionic/storage';
 
 import { Constant } from '../../shared/constant';
-import { ApiProvider } from '../providers';
-import { GeoProvider } from '../providers';
+import { ApiProvider } from '../api/api';
+import { GeoProvider } from '../geo/geo';
 
 import { UserDetail } from '../../entity/user-detail';
 
@@ -22,7 +22,7 @@ export class ContextProvider {
   userDetail: UserDetail;
   deviceId: string;
 
-  constructor(public apiProvider: ApiProvider, private device: Device, public storage: Storage, private geoProvider: GeoProvider) {
+  constructor(public apiProvider: ApiProvider, public device: Device, public storage: Storage, public geoProvider: GeoProvider) {
     console.log('Hello ContextProvider Provider');
     this.userDetail = new UserDetail(null, null, null);
   }

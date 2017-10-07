@@ -2,8 +2,8 @@ import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
 
-import { ApiProvider } from '../providers';
-import { ContextProvider } from '../providers';
+import { ApiProvider } from '../api/api';
+import { ContextProvider } from '../context/context';
 
 import { Constant } from '../../shared/constant';
 import { User } from '../../entity/user';

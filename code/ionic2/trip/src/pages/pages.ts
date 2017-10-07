@@ -9,3 +9,13 @@ export const MainPage = 'TabsPage';
 export const Tab1Root = 'HomePage';
 export const Tab2Root = 'SearchPage';
 export const Tab3Root = 'SettingsPage';
+
+export const BuildingListPage = 'BuildingListPage';
+export const BuildingDetailPage = 'BuildingDetailPage';
+export const RentPage = 'RentPage';
+export const RentTypePage = 'RentTypePage';
+
+export const NearFilterPage = 'NearFilterPage';
+export const FromFilterPage = 'FromFilterPage';
+export const PriceFilterPage = 'PriceFilterPage';
+export const MoreFilterPage = 'MoreFilterPage';

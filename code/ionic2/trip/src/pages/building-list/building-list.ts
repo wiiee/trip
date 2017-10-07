@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, PopoverController } from 'ionic-angular';
 
-import { BuildingDetailPage } from '../building-detail/building-detail';
-import { NearFilterPage } from '../near-filter/near-filter';
-import { PriceFilterPage } from '../price-filter/price-filter';
-import { FromFilterPage } from '../from-filter/from-filter';
-import { MoreFilterPage } from '../more-filter/more-filter';
+import { BuildingDetailPage } from '../pages';
+
+import { NearFilterPage } from '../pages';
+import { PriceFilterPage } from '../pages';
+import { FromFilterPage } from '../pages';
+import { MoreFilterPage } from '../pages';
 
 import { BuildingItem } from '../../entity/building-item';
 import { FilterItem } from '../../entity/filter-item';
