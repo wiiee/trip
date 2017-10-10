@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /**
@@ -6,26 +6,19 @@ import { Injectable } from '@angular/core';
  */
 @Injectable()
 export class ApiProvider {
-  options: any;
-
   constructor(public http: HttpClient) {
-    let headers = new HttpHeaders();
-    headers.append("Content-Type", "application/json; charset=utf-8");
-
-    this.options = {
-      headers: headers,
-      withCredentials: true
-    }
   }
 
-  get(url: string, params?: any) {
-    let reqOpts = {
-      headers: this.options.headers,
-      withCredentials: true,
-      params: new HttpParams()
+  get(url: string, params?: any, reqOpts?: any) {
+    if (!reqOpts) {
+      reqOpts = {
+        params: new HttpParams()
+      };
     }
+
     // Support easy query params for GET requests
     if (params) {
+      reqOpts.params = new HttpParams();
       for (let k in params) {
         reqOpts.params.set(k, params[k]);
       }
@@ -34,19 +27,19 @@ export class ApiProvider {
     return this.http.get(url, reqOpts);
   }
 
-  post(url: string, body: any) {
-    return this.http.post(url, body, this.options);
+  post(url: string, body: any, reqOpts?: any) {
+    return this.http.post(url, body, reqOpts);
   }
 
-  put(url: string, body: any) {
-    return this.http.put(url, body, this.options);
+  put(url: string, body: any, reqOpts?: any) {
+    return this.http.put(url, body, reqOpts);
   }
 
-  delete(url: string) {
-    return this.http.delete(url, this.options);
+  delete(url: string, reqOpts?: any) {
+    return this.http.delete(url, reqOpts);
   }
 
-  patch(url: string, body: any) {
-    return this.http.put(url, body, this.options);
+  patch(url: string, body: any, reqOpts?: any) {
+    return this.http.put(url, body, reqOpts);
   }
 }

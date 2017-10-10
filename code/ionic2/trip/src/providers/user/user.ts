@@ -46,7 +46,7 @@ export class UserProvider {
     }
 
     let url = Constant.HOST + "/api/user/logIn";
-    let seq = this.apiProvider.post(url, JSON.stringify(logInUser)).share();
+    let seq = this.apiProvider.post(url, logInUser).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in

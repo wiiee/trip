@@ -37,7 +37,7 @@ export class GeoProvider {
 
     this.backgroundGeolocation.configure(config).subscribe(location => {
       console.log('BackgroundGeolocation:  ' + location.latitude + ',' + location.longitude);
-      if(location !== undefined && location.coords !== undefined){
+      if (location !== undefined && location.coords !== undefined) {
         this.updateLocation(location.coords);
       }
     }, (err) => {
@@ -53,7 +53,7 @@ export class GeoProvider {
 
     this.backgroundGeolocation.finish();
 
-    if(this.watch){
+    if (this.watch) {
       this.watch.unsubscribe();
     }
   }
@@ -77,7 +77,8 @@ export class GeoProvider {
     });
   }
 
-  private updateLocation(coords: Coordinates, isGetAddress: boolean = false): void{
+  private updateLocation(coords: Coordinates, isGetAddress: boolean = false): void {
+    if (this.location) {
       this.location.latitude = coords.latitude;
       this.location.longitude = coords.longitude;
 
@@ -86,6 +87,7 @@ export class GeoProvider {
           this.location.address = address;
         });
       }
+    }
   }
 
   public getAddress(latitude: number, longitude: number): Promise<string> {
