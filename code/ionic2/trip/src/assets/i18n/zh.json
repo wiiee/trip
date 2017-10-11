@@ -2,9 +2,9 @@
   "BACK_BUTTON_TEXT": "Back",
 
   "NAME": "Name",
-  "EMAIL": "Email",
-  "USERNAME": "Username",
-  "PASSWORD": "Password",
+  "USER_ID": "用户Id",
+  "USERNAME": "用户名",
+  "PASSWORD": "密码",
   "LOGIN": "登陆",
   "SIGNUP": "注册",
 
@@ -44,7 +44,7 @@
 
   "LOGIN_TITLE": "登陆",
   "LOGIN_ERROR": "Unable to sign in. Please check your account information and try again.",
-  "LOGIN_BUTTON": "Sign in",
+  "LOGIN_BUTTON": "登陆",
   "SIGNUP_TITLE": "注册",
   "SIGNUP_ERROR": "Unable to create account. Please check your account information and try again.",
   "SIGNUP_BUTTON": "Sign up",

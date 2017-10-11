@@ -82,3 +82,17 @@ $fa-font-path: $font-path;
 
 @import "roboto";
 @import "noto-sans";
+
+.filter-popover .popover-content {
+  width: 100% !important;
+  left: 0 !important;
+  bottom: 50px !important;
+}
+
+.filter-popover ion-backdrop {
+  opacity: 0.26;
+}
+
+.current {
+  color: color($colors, danger) !important;
+} 

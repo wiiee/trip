@@ -24,18 +24,15 @@ export class RegionProvider {
     }
 
     return new Promise(resolve => {
-      var url = Constant.HOST + "/api/region/getRegionAreasByParentId";
-      var params = {
-        parentId: parentId
-      };
+      var url = Constant.HOST + "/api/region/getRegionAreasByParentId?parentId=" + parentId;
 
-      this.apiProvider.get(url, params)
-        .subscribe(res => {
+      this.apiProvider.get(url)
+        .subscribe((res: any) => {
           var result = [];
 
-          // res.forEach(element => {
-          //   result.push({id: element.id, name: element.name, hasChild: element.hasChild});
-          // });
+          res.forEach(element => {
+            result.push({id: element.id, name: element.name, hasChild: element.hasChild});
+          });
 
           this.regionsWithParentId[parentId] = result;
           resolve(result);
@@ -49,18 +46,15 @@ export class RegionProvider {
     }
 
     return new Promise(resolve => {
-      var url = Constant.HOST + "/api/region/GetParallelNodes";
-      var params = {
-        regionId: regionId
-      };
+      var url = Constant.HOST + "/api/region/GetParallelNodes?regionId=" + regionId;
 
-      this.apiProvider.get(url, params)
-        .subscribe(data => {
+      this.apiProvider.get(url)
+        .subscribe((res: any) => {
           var result = [];
 
-          // data.forEach(element => {
-          //   result.push({id: element.Id, name: element.Name});
-          // });
+          res.forEach(element => {
+            result.push({id: element.Id, name: element.Name});
+          });
 
           this.regionsWithParallelId[regionId] = result;
           resolve(result);

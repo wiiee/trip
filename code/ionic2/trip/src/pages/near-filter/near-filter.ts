@@ -52,13 +52,13 @@ export class NearFilterPage {
   }
 
   buildNextBlock(block: AreaBlock) {
-    if(!block.current.hasChild){
-      return;
-    }
-
     //清空余下的block
     if (block.depth != this.blocks.length - 1) {
       this.blocks = this.blocks.slice(0, block.depth + 1);
+    }
+
+    if(!block.current.hasChild){
+      return;
     }
 
     if (block.type === AreaType.Region) {

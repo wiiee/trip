@@ -71,7 +71,7 @@ export class UserProvider {
     signUpUser.password = md5(signUpUser.password);
 
     let url = Constant.HOST + "/api/user/signUp?deviceId=" + this.contextProvider.deviceId;
-    let seq = this.apiProvider.post(url, JSON.stringify(signUpUser)).share();
+    let seq = this.apiProvider.post(url, signUpUser).share();
 
     seq.subscribe((res: any) => {
       // If the API returned a successful response, mark the user as logged in

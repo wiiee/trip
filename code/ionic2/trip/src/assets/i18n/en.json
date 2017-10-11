@@ -2,7 +2,7 @@
   "BACK_BUTTON_TEXT": "Back",
 
   "NAME": "Name",
-  "EMAIL": "Email",
+  "USER_ID": "用户Id",
   "USERNAME": "Username",
   "PASSWORD": "Password",
   "LOGIN": "Sign in",

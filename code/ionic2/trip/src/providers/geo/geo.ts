@@ -93,8 +93,8 @@ export class GeoProvider {
   public getAddress(latitude: number, longitude: number): Promise<string> {
     return new Promise(resolve => {
       var url = Constant.HOST + "/api/geo/getAddress?latitude=" + latitude + "&longitude=" + longitude;
-      this.apiProvider.get(url).subscribe(data => {
-        resolve(data);
+      this.apiProvider.get(url).subscribe((res: any) => {
+        resolve(res);
       });
     });
   }
