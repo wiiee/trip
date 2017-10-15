@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AreaBlock } from '../../entity/geo/area-block';
@@ -19,7 +19,7 @@ import { RegionProvider } from '../../providers/providers';
   selector: 'page-near-filter',
   templateUrl: 'near-filter.html',
 })
-export class NearFilterPage {
+export class NearFilterPage implements OnInit {
   blocks: AreaBlock[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public regionProvider: RegionProvider) {
@@ -31,7 +31,7 @@ export class NearFilterPage {
 
   ngOnInit() {
     if (this.navParams.data) {
-      this.blocks = this.navParams.data.blocks;
+      this.blocks = this.navParams.data.filter.data.blocks;
     }
 
     if(this.blocks.length === 1){

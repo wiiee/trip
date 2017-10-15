@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ViewController, NavParams, Events } from 'ionic-angular';
 
 import { PriceRange } from '../../entity/price-range';
 
@@ -17,9 +17,9 @@ import { PriceRange } from '../../entity/price-range';
 })
 export class PriceFilterPage {
   items: PriceRange[];
-  current: PriceRange;
+  currentIndex: number;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams, public events: Events) {
     this.items = [];
     
     this.items.push(new PriceRange(0, 9999999, "不限"));
@@ -31,11 +31,17 @@ export class PriceFilterPage {
     this.items.push(new PriceRange(5000, 8000, "5000-8000元"));
     this.items.push(new PriceRange(8000, 9999999, "8000元以上"));
 
-    this.current = this.items[0];
+    this.currentIndex = this.navParams.data.filter.data.currentIndex;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PriceFilterPage');
   }
 
+  itemSelected(i: number) {
+    this.currentIndex = i;
+    this.navParams.data.filter.data.currentIndex = i;
+    this.events.publish('buildingList:filter', this.navParams.data.filter);
+    this.viewCtrl.dismiss();
+  }
 }

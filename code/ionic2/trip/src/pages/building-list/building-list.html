@@ -17,7 +17,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-3 *ngFor="let filter of filters">
-        <div text-center (click)="selectFilter($event, filter)">{{filter.text}}<ion-icon [name]="filter.iconName"></ion-icon></div>
+        <div text-center (click)="selectFilter($event, filter)">{{filter.text}}<ion-icon name="arrow-down"></ion-icon></div>
       </ion-col>
     </ion-row>
   </ion-grid>
