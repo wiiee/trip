@@ -37,5 +37,4 @@ export class SearchPage {
       item: item
     });
   }
-
 }

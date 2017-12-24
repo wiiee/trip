@@ -22,7 +22,7 @@
     </ion-row>
   </ion-grid>
   <ion-card *ngFor="let item of items">
-    <ion-grid>
+    <ion-grid (click)="goDetail()">
       <ion-row>
         <ion-col col-4>
           <ion-img width="80" height="80" [src]="item.imgs[0].id"></ion-img>
@@ -31,7 +31,7 @@
           <div>大冲新城花园华润城 深圳湾生态园 金地国际 好房出租 整租</div>
           <div>
             <small>整租 2室2厅 豪装</small>
-            <span class="price" float-right (click)="goDetail()">6000元/月 <ion-icon name="arrow-forward"></ion-icon></span>
+            <span class="price" float-right>6000元/月</span>
           </div>
           <div><small>南山-科技园</small></div>
         </ion-col>
