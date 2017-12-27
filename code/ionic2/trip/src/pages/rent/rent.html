@@ -97,9 +97,9 @@
       <ion-col col-5>
         <ion-input type="text" placeholder="填写联系人"></ion-input>
       </ion-col>
-      <ion-col text-right>
-        <ion-radio checked></ion-radio>先生
-        <ion-radio></ion-radio>女士
+      <ion-col radio-group [(ngModel)]="gender" text-right>
+        <ion-radio value="male" checked></ion-radio>先生
+        <ion-radio value="female"></ion-radio>女士
       </ion-col>
     </ion-row>
   </ion-grid>

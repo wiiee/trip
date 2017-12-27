@@ -40,4 +40,8 @@ export class HomePage {
   rent() {
     this.navCtrl.push(RentTypePage);
   }
+
+  hotel() {
+    
+  }
 }

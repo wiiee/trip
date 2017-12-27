@@ -14,7 +14,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'rent.html',
 })
 export class RentPage {
-
+  gender: string = "male";
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

@@ -7,8 +7,8 @@
 <ion-content padding>
   <ion-grid>
     <ion-row *ngIf="location">
-        <ion-col>您当前的位置: {{location.address}} Lat-{{location.latitude}}, Lon-{{location.longitude}}({{location.address}})</ion-col>
-      </ion-row>
+      <ion-col>您当前的位置: {{location.address}} Lat-{{location.latitude}}, Lon-{{location.longitude}}({{location.address}})</ion-col>
+    </ion-row>
     <ion-row>
       <ion-col col-4 text-center>
         <button ion-button icon-left (click)="buildingList()">
@@ -17,18 +17,17 @@
         </button>
       </ion-col>
       <ion-col col-4 text-center>
-         <button ion-button icon-left (click)="rent()">
+        <button ion-button icon-left (click)="rent()">
           <ion-icon name="open"></ion-icon>
           出租
-        </button> 
+        </button>
       </ion-col>
       <ion-col col-4 text-center>
-         <button ion-button icon-left (click)="hotel()">
-          <ion-icon name="train"></ion-icon>
+        <button ion-button icon-left (click)="hotel()">
+          <fa-icon name="hotel"></fa-icon>
           酒店
-        </button>       
-      </ion-col>      
+        </button>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-
