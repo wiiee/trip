@@ -1,4 +1,4 @@
-package com.app.restful.runner;
+package com.app.core.runner;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

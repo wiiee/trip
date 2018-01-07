@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, ViewController, NavParams, Events } from 'ionic-angular';
 
+import { BaseFilter } from '../base-filter';
+
 /**
  * Generated class for the FromFilterPage page.
  *
@@ -13,18 +15,9 @@ import { IonicPage, ViewController, NavParams, Events } from 'ionic-angular';
   selector: 'page-from-filter',
   templateUrl: 'from-filter.html',
 })
-export class FromFilterPage {
-  items: string[];
-  currentIndex: number;
-
-  constructor(public viewCtrl: ViewController, public navParams: NavParams, public events: Events) {
-    this.items = [];
-    
-    this.items.push("不限");
-    this.items.push("个人");
-    this.items.push("品牌公寓");
-    
-    this.currentIndex = this.navParams.data.filter.data.currentIndex;
+export class FromFilterPage extends BaseFilter {
+  constructor(public viewCtrl: ViewController, navParams: NavParams, events: Events) {
+    super(navParams.data.filter, events);
   }
 
   ionViewDidLoad() {
@@ -32,9 +25,8 @@ export class FromFilterPage {
   }
   
   itemSelected(i: number) {
-    this.currentIndex = i;
-    this.navParams.data.filter.data.currentIndex = i;
-    this.events.publish('buildingList:filter', this.navParams.data.filter);
+    this.filter.data.currentIndex = i;
+    this.publish();
     this.viewCtrl.dismiss();
   }
 }

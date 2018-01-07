@@ -1,7 +1,7 @@
 <ion-content no-padding>
-  <ion-grid *ngIf="blocks.length === 2">
+  <ion-grid *ngIf="filter.data.blocks.length === 2">
     <ion-row>
-      <ion-col *ngFor="let block of blocks" col-6>
+      <ion-col *ngFor="let block of filter.data.blocks" col-6>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
                 {{ item.name }}
@@ -11,9 +11,9 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid *ngIf="blocks.length === 3">
+  <ion-grid *ngIf="filter.data.blocks.length === 3">
     <ion-row>
-      <ion-col *ngFor="let block of blocks" col-4>
+      <ion-col *ngFor="let block of filter.data.blocks" col-4>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
                 {{ item.name }}
@@ -23,9 +23,9 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid *ngIf="blocks.length === 4">
+  <ion-grid *ngIf="filter.data.blocks.length === 4">
     <ion-row>
-      <ion-col *ngFor="let block of blocks" col-3>
+      <ion-col *ngFor="let block of filter.data.blocks" col-3>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
                 {{ item.name }} 
@@ -35,9 +35,9 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid *ngIf="blocks.length === 5 || blocks.length === 6">
+  <ion-grid *ngIf="filter.data.blocks.length === 5 || filter.data.blocks.length === 6">
     <ion-row>
-      <ion-col *ngFor="let block of blocks" col-2>
+      <ion-col *ngFor="let block of filter.data.blocks" col-2>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
                 {{ item.name }} 
@@ -47,9 +47,9 @@
     </ion-row>
   </ion-grid>
 
-  <ion-grid *ngIf="blocks.length > 6">
+  <ion-grid *ngIf="filter.data.blocks.length > 6">
     <ion-row>
-      <ion-col *ngFor="let block of blocks" col-1>
+      <ion-col *ngFor="let block of filter.data.blocks" col-1>
         <ion-list>
           <button ion-item *ngFor="let item of block.options" (click)="itemSelected(block, item)" [class.current]="block.current != null && block.current.id === item.id">
                 {{ item.name }} 

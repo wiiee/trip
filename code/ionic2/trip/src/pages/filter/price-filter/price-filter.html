@@ -1,6 +1,6 @@
 <ion-content no-padding>
   <ion-list>
-    <button ion-item *ngFor="let item of items; let i=index" (click)="itemSelected(i)" [class.current]="currentIndex === i">
+    <button ion-item *ngFor="let item of filter.data.items; let i=index" (click)="itemSelected(i)" [class.current]="filter.data.currentIndex === i">
           {{ item.text }}
         </button>
   </ion-list>
