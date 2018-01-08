@@ -5,127 +5,98 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>小区名称</ion-col>
-      <ion-col>
-        <ion-input type="text" placeholder="请选择小区"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>户型</ion-col>
-      <ion-col>
-        <ion-input type="text" placeholder="1室1厅1卫"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
+  <ion-item>
+    <ion-label fixed>小区名称</ion-label>
+    <ion-input type="text" placeholder="请选择小区"></ion-input>
+  </ion-item>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>楼层</ion-col>
-      <ion-col>
-        <ion-input type="text"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
+  <ion-item>
+    <ion-label fixed>户型</ion-label>
+    <ion-input type="text" placeholder="1室1厅1卫"></ion-input>
+  </ion-item>
 
-  <ion-grid>
+  <ion-item>
+    <ion-label fixed>楼层</ion-label>
+    <ion-input type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-grid no-padding>
     <ion-row>
-      <ion-col col-3>建筑面积</ion-col>
-      <ion-col col-6>
-        <ion-input type="text" placeholder="请输入建筑面积"></ion-input>
+      <ion-col>
+        <ion-item>
+          <ion-label fixed>建筑面积</ion-label>
+          <ion-input type="text" placeholder="请输入建筑面积"></ion-input>
+        </ion-item>
       </ion-col>
-      <ion-col col text-right>
+      <ion-col col-2 text-right>
         平米
       </ion-col>
     </ion-row>
   </ion-grid>
-  <hr>
 
-  <ion-grid>
+  <ion-grid no-padding>
     <ion-row>
-      <ion-col col-3>租金</ion-col>
-      <ion-col col-6>
-        <ion-input type="text" placeholder="请输入租金"></ion-input>
+      <ion-col>
+        <ion-item>
+          <ion-label fixed>租金</ion-label>
+          <ion-input type="text" placeholder="请输入租金"></ion-input>
+        </ion-item>
       </ion-col>
-      <ion-col col text-right>
+      <ion-col col-2 text-right>
         元/月
       </ion-col>
     </ion-row>
   </ion-grid>
-  <hr>
 
-  <ion-grid>
+  <ion-item>
+    <ion-label fixed>配套设施</ion-label>
+    <ion-input type="text" placeholder=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>描述</ion-label>
+    <ion-textarea placeholder="详细的房源资料描述更能吸引找房者（500字内）"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label fixed>房屋详情</ion-label>
+    <ion-input type="text" placeholder="（选填）"></ion-input>
+  </ion-item>
+
+  <ion-grid no-padding>
     <ion-row>
-      <ion-col col-3>配套设施</ion-col>
       <ion-col>
-        <ion-input type="text"></ion-input>
+        <ion-item>
+          <ion-label fixed>联系人</ion-label>
+          <ion-input type="text" placeholder="填写联系人"></ion-input>
+        </ion-item>
       </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>描述</ion-col>
-      <ion-col>
-        <ion-textarea placeholder="详细的房源资料描述更能吸引找房者（500字内）"></ion-textarea>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>房屋详情</ion-col>
-      <ion-col>
-        <ion-input type="text" placeholder="（选填）"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>联系人</ion-col>
-      <ion-col col-5>
-        <ion-input type="text" placeholder="填写联系人"></ion-input>
-      </ion-col>
-      <ion-col radio-group [(ngModel)]="gender" text-right>
+      <ion-col col-4 radio-group [(ngModel)]="gender" text-right>
         <ion-radio value="male" checked></ion-radio>先生
         <ion-radio value="female"></ion-radio>女士
       </ion-col>
     </ion-row>
   </ion-grid>
-  <hr>
 
-  <ion-grid>
+  <ion-grid no-padding>
     <ion-row>
-      <ion-col col-3>手机号</ion-col>
-      <ion-col col-4>
-        <ion-input type="text" placeholder="请输入手机号"></ion-input>
+      <ion-col>
+        <ion-item>
+          <ion-label fixed>手机号</ion-label>
+          <ion-input type="text" placeholder="请输入手机号"></ion-input>
+        </ion-item>
       </ion-col>
-      <ion-col text-right>
+      <ion-col col-4 text-right>
         <button ion-button outline color="danger">获取验证码</button>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <hr>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col col-3>验证码</ion-col>
-      <ion-col>
-        <ion-input type="text" placeholder="请输入验证码"></ion-input>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <hr>
+  <ion-item>
+    <ion-label fixed>验证码</ion-label>
+    <ion-input type="text" placeholder="请输入验证码"></ion-input>
+  </ion-item>
+
   <button ion-button block color="danger">发布</button>
 </ion-content>

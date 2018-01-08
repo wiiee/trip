@@ -6,4 +6,10 @@ page-rent {
     .radio-md .radio-icon {
         top: 3px;
     }
+
+    ion-label[fixed] {
+        width: 50px;
+        min-width: 50px;
+        max-width: 75px;
+    }
 }
